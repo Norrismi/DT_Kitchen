@@ -1,7 +1,17 @@
-const proteinArr = [
-    "Chicken",
-    "Beef",
-    "Fried Fish",
+
+
+
+
+
+
+let proteinArr = [
+    //{saturday: 'Chicken'}
+    // saturday = [
+    //     'Chicken', 
+    //     'Pizza'
+    // ]
+    'Chicken',
+    'Beef'
 ]
 
 const greensArr = [
@@ -14,4 +24,9 @@ const starchArr = [
     "Mashed Potatoes",
 ]
 
-export {proteinArr, greensArr, starchArr}
+const SaturdayArr = [
+   {saturday: 'Chicken'}
+]
+export {proteinArr, greensArr, starchArr, 
+     SaturdayArr
+}

@@ -14,7 +14,7 @@
  display: flex;
  justify-content: center;
  width: 40rem;
- height: 400px;
+ height: auto;
  margin-right: auto;
  margin-left: auto;
 }

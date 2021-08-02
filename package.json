@@ -9,10 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^2.7.0",
     "bootstrap": "^5.0.2",
+    "date-and-time": "^1.0.1",
     "next": "11.0.1",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-hook-form": "^7.12.2",
+    "react-select": "^4.3.1"
   },
   "devDependencies": {
     "eslint": "7.31.0",
