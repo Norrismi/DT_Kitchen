@@ -1,46 +1,85 @@
-.home_container{
+.home_container {
   display: flex;
   justify-content: center;
 
 }
 
-.hello{
+.hello {
   color: red;
 }
 
 
 
-.home_card{
- display: flex;
- justify-content: center;
- width: 40rem;
- height: auto;
- margin-right: auto;
- margin-left: auto;
-}
-
-.title{
+.home_card {
   display: flex;
   justify-content: center;
-  margin-bottom: 40px;
+  width: 40rem;
+  height: auto;
+  margin-right: auto;
+  margin-left: auto;
 }
 
-.home_selectGroup{
+.title {
   display: flex;
   justify-content: center;
+  margin-bottom: 20px;
+}
+
+.title2 {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+
+.home_selectGroup {
+  display: flex;
+  width: 440px;
+  margin-left: auto;
+  margin-right: auto;
+
 
 }
 
-.home_select{
- width: 350px;
- margin-bottom: 30px;
+/* .home_input {
+  margin-bottom: 10px;
+} */
+
+
+.home_select {
+  display: flex;
+  justify-content: center;
+  width: 350px;
+  margin-bottom: 15px;
+  color: grey;
+  border: 1px solid lightgray;
+  padding: 0.375rem 0.75rem;
 }
 
-.homeLabel{
+.homeLabel {
   width: 90px;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
-.home_option{
+.home_option {
   display: none;
+
+
+
+}
+
+.home_messageContainer{
+  display: flex;
+  
+}
+
+.home_message{
+  color: red;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 15px;
+  margin-top: -12px;
 }
