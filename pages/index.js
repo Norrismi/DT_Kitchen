@@ -4,16 +4,18 @@ import styles from '../styles/Home.module.css'
 import { proteinArr, starchArr, greensArr } from '../utils'
 import date from 'date-and-time';
 
-export default function Home({ submitForm }) {
 
-  const { register, handleSubmit, control, formState: { errors } } = useForm();
 
+export default function Home() {
+
+  const { register, handleSubmit, formState: { errors, isSubmitSuccessful } } = useForm();
+
+
+  if (isSubmitSuccessful) return <h2>Your form was submitted</h2>
 
   const onSubmit = (data, e) => {
-    e.target.reset()
-    submitForm()
+    console.log(data)
   }
-
 
 
   const now = new Date();
@@ -25,6 +27,7 @@ export default function Home({ submitForm }) {
   return (
 
     <>
+
       <form onSubmit={handleSubmit((onSubmit))}>
 
         <div className={`${styles.home_card} card home_card `}>
