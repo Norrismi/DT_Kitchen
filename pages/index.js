@@ -31,7 +31,7 @@ export default function Home() {
       <form onSubmit={handleSubmit((onSubmit))}>
 
         <div className={`${styles.home_card} card home_card `}>
-          <div className="card-body">
+          <div className={`${styles.home_card_body} card-body`}>
             <h2 className={styles.title}>Order Info</h2>
 
             <div className={`${styles.home_selectGroup} input-group mb-3`}>
@@ -110,7 +110,11 @@ export default function Home() {
 
 
             </div>
-            <button className="btn btn-success contact-form_button " type="submit">Submit My Order</button>
+
+            <div className={styles.home_submitButton_container}>
+
+              <button className={` btn btn-success contact-form_button`} type="submit">Submit My Order</button>
+            </div>
 
           </div>
         </div>
