@@ -70,11 +70,84 @@
 }
 
 @media (min-width: 280px) {
+  .home_card{
+    width: 280px;
+  }
+
+
+  .home_card_body{
+    width: auto;
+    padding: 5px;
+  }
+
+  .home_input{
+    width: 270px;
+  }
+
+  .home_selectGroup {
+    width: 270px;
+ 
+  }
+
+  .home_select {
+    width: 200px;
+    margin-bottom: 15px;
+
+  }
+
+  .homeLabel {
+    width: 70px;
+    margin-bottom: 15px;
+  }
+
+  .home_submitButton_container{
+    justify-content: center;
+  }
 
 
 }
 
 @media (min-width: 300px) {
+
+  /* getting the card centered with margin */
+  .home_card{
+    margin-top: 30px;
+  }
+
+  .home_card{
+    width: 300px;
+    padding: 10px;
+  }
+
+}
+
+@media (min-width: 380px) {
+    
+  .home_card{
+    width: 375px;
+    align-items: center;
+  }
+
+  .homeLabel {
+    width: 80px;
+  }
+
+  
+  .home_selectGroup {
+    width: 300px;
+    
+  }
+  .home_input{
+    width: 300px;
+  }
+
+  .home_select {
+    width: 220px;
+
+  }
+
+
+
 
 }
 

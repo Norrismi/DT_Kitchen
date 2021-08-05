@@ -34,29 +34,29 @@ export default function Home() {
           <div className={`${styles.home_card_body} card-body`}>
             <h2 className={styles.title}>Order Info</h2>
 
-            <div className={`${styles.home_selectGroup} input-group mb-3`}>
+            <div className={`${styles.home_selectGroup, styles.home_input} input-group mb-3`}>
               <div className="input-group-prepend">
                 <span className="input-group-text" >Name</span>
               </div>
-              <input type="text" className={`${styles.home_input} form-control`} {...register("name", { required: true })} placeholder="Order Name" aria-label="Order Name" aria-describedby="basic-addon" />
+              <input type="text" className={`form-control`} {...register("name", { required: true })} placeholder="Order Name" aria-label="Order Name" aria-describedby="basic-addon" />
             </div>
             <div className={`${styles.home_messageContainer}`}>
 
               {errors.name && <div className={`${styles.home_message}`}>Order name is required</div>}
             </div>
 
-            <div className={`${styles.home_selectGroup} input-group mb-3`}>
+            <div className={`${styles.home_selectGroup, styles.home_input} input-group mb-3`}>
               <div className="input-group-prepend">
                 <span className="input-group-text" >Email</span>
               </div>
-              <input type="email" id="email" className={`${styles.home_input} form-control`} {...register("email")} placeholder="Email@provider.com" aria-label="Email" aria-describedby="basic-addon" />
+              <input type="email" id="email" className={`form-control`} {...register("email")} placeholder="Email@provider.com" aria-label="Email" aria-describedby="basic-addon" />
             </div>
 
-            <div className={`${styles.home_selectGroup} input-group mb-3`}>
+            <div className={`${styles.home_selectGroup, styles.home_input} input-group mb-3`}>
               <div className="input-group-prepend">
-                <span className="input-group-text" >Phone Number</span>
+                <span className="input-group-text" >Number</span>
               </div>
-              <input type="tel" id="phone" className={`${styles.home_input} form-control`} {...register("phone", { required: true })} placeholder="111-111-1111" aria-label="Phone Number" aria-describedby="basic-addon" />
+              <input type="tel" id="phone" className={`form-control`} {...register("phone", { required: true })} placeholder="111-111-1111" aria-label="Phone Number" aria-describedby="basic-addon" />
 
 
             </div>
