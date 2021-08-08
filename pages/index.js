@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import { useForm } from "react-hook-form";
 import styles from '../styles/Home.module.css'
-import { proteinArr, starchArr, greensArr } from '../utils'
+import { proteinArr, starchArr, greensArr, includedArr, drinkArr, dessertArr } from '../utils'
 import date from 'date-and-time';
+import {db} from '../utils/firebase';
+import firebase from "firebase/app";
+
 
 
 
@@ -15,6 +18,11 @@ export default function Home() {
 
   const onSubmit = (data, e) => {
     console.log(data)
+
+    db.collection('New Order').add({
+      ...data,
+      messageSent: firebase.firestore.FieldValue.serverTimestamp()
+  })
   }
 
 
@@ -106,9 +114,45 @@ export default function Home() {
 
               </select>
               {errors.starch && <p>Starch is required</p>}
+            </div>
 
+            <div className={`${styles.home_selectGroup} input-group mb-3`}>
+              <div className="input-group-prepend">
+                <label className={`${styles.homeLabel} input-group-text`} htmlFor="inputGroupSelect01">Side</label>
+              </div>
+              <select {...register("side", { required: true })} className={`${styles.home_select} custom-select" id="inputGroupSelect01`}>
+                <option className={styles.home_option}>Choose...</option>
 
+                {includedArr && includedArr.map((item) => <option key={item}>{item}</option>)}
 
+              </select>
+              {errors.starch && <p>Starch is required</p>}
+            </div>
+
+            <div className={`${styles.home_selectGroup} input-group mb-3`}>
+              <div className="input-group-prepend">
+                <label className={`${styles.homeLabel} input-group-text`} htmlFor="inputGroupSelect01">Drink</label>
+              </div>
+              <select {...register("drink", { required: true })} className={`${styles.home_select} custom-select" id="inputGroupSelect01`}>
+                <option className={styles.home_option}>Choose...</option>
+
+                {drinkArr && drinkArr.map((item) => <option key={item}>{item}</option>)}
+
+              </select>
+              {errors.starch && <p>Starch is required</p>}
+            </div>
+
+            <div className={`${styles.home_selectGroup} input-group mb-3`}>
+              <div className="input-group-prepend">
+                <label className={`${styles.homeLabel} input-group-text`} htmlFor="inputGroupSelect01">Dessert</label>
+              </div>
+              <select {...register("dessert", { required: true })} className={`${styles.home_select} custom-select" id="inputGroupSelect01`}>
+                <option className={styles.home_option}>Choose...</option>
+
+                {dessertArr && dessertArr.map((item) => <option key={item}>{item}</option>)}
+
+              </select>
+              {errors.starch && <p>Starch is required</p>}
             </div>
 
             <div className={styles.home_submitButton_container}>
