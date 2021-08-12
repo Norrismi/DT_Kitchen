@@ -6,6 +6,7 @@ import date from 'date-and-time';
 import { db } from '../utils/firebase';
 import firebase from "firebase/app";
 import GetFormInput from '../components/Form/GetFormInput';
+import OrderForm from '../components/Form/OrderForm';
 
 
 
@@ -36,8 +37,12 @@ export default function Home() {
   return (
 
     <>
-    <GetFormInput/>
+      <OrderForm/>
+
     </>
+
+
+
 
     // <>
 
@@ -183,7 +188,6 @@ export default function Home() {
     //     </div>
 
     //   </form>
-    //     <GetFormInput/>
 
     // </>
   )
