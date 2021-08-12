@@ -1,0 +1,13 @@
+.home_selectGroup{
+    /* display: inline; */
+    width: auto;
+}
+
+
+
+.fi_dropdown{
+    display: inline-block !important;
+    width: 300px;
+    height: 38px;
+}
+
