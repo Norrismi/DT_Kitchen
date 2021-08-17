@@ -1,12 +1,10 @@
-import content from "./FormHelper";
-import styles from '../../styles/Home.module.css'
-import { useState } from 'react';
-import { useForm } from "react-hook-form";
 
-
-import date from 'date-and-time';
-
+import { db } from '../../utils/firebase'
 import firebase from "firebase/app";
+import styles from '../../styles/Home.module.css'
+import { useForm } from "react-hook-form";
+import date from 'date-and-time';
+import { useState, useEffect } from 'react'
 
 
 
@@ -14,16 +12,46 @@ const OrderForm = () => {
 
     const { register, handleSubmit, formState: { errors, isSubmitSuccessful } } = useForm();
 
+
+    const [proteinItem, setProteinItem] = useState();
+    const [dessertItem, setDessertItem] = useState();
+
+
+    let firestore = firebase.firestore().collection('days')
+    const now = new Date();
+    let day = date.format(now, 'dddd').toLowerCase();
+
+
+    useEffect(() => {
+        firestore.doc('monday').collection('protein').onSnapshot(item => { setProteinItem(item.docs.map(a => a.data().item)) })
+
+         firestore.doc('monday').collection('dessert').onSnapshot(item => { setDessertItem(item.docs.map(a => a.data().item)) })
+
+
+    }, []);
+
+    const proteins = proteinItem && proteinItem.map(item => <option key={item}>{item} </option>)
+    const desserts = dessertItem && dessertItem.map(item => <option key={item}>{item} </option>)
+
+
+
     if (isSubmitSuccessful) return <h2>Your form was submitted</h2>
+
 
     const onSubmit = (data, e) => {
         console.log(data)
-    
+
         db.collection('New Order').add({
-          ...data,
-          messageSent: firebase.firestore.FieldValue.serverTimestamp()
+            ...data,
+            messageSent: firebase.firestore.FieldValue.serverTimestamp()
         })
-      }
+    }
+
+
+
+
+ 
+
 
 
     return (
@@ -35,33 +63,44 @@ const OrderForm = () => {
                 <div className={`${styles.home_card} card home_card `}>
                     <div className={`${styles.home_card_body} card-body`}>
                         <h2 className={styles.title}>Order Info</h2>
-                        {content.inputs.map((input, key) => {
-                            return (
-                                <div key={key}>
-                                    <div className={`${styles.home_selectGroup, styles.home_input} input-group mb-3`}>
-                                        <div className={` $input-group-prepend`}>
-                                            <span className={` input-group-text`} >{input.name}</span>
-                                        </div>
-                                        <input
-                                            type={input.text}
-                                            className={`form-control`}
-                                            {...register(`${input.registerName}`, { required: true })}
-                                            placeholder={input.placeholder}
-                                            aria-label={input.ariaLabel} />
-                                    </div>
 
-                                    <div className={`${styles.home_messageContainer}`}>
-                                        {input.error && <div className={`${styles.home_message}`}>{input.errorMessage}</div>}
-                                        {/* { if (errors){
-                                            <div className={`${styles.home_message}`}>{input.errorMessage}</div>
-                                            }} */}
-                                    </div>
-                                </div>
-                            )
-                        })}
+                        <div className={`${styles.home_selectGroup, styles.home_input} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <span className="input-group-text" >Name</span>
+                            </div>
+                            <input type="text" className={`form-control`} {...register("name", { required: true })} placeholder="Order Name" aria-label="Order Name" aria-describedby="basic-addon" />
+                        </div>
+                        <div className={`${styles.home_messageContainer}`}>
+
+                            {errors.name && <div className={`${styles.home_message}`}>Order name is required</div>}
+                        </div>
+
+                        <div className={`${styles.home_selectGroup, styles.home_input} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <span className="input-group-text" >Email</span>
+                            </div>
+                            <input type="email" id="email" className={`form-control`} {...register("email")} placeholder="Email@provider.com" aria-label="Email" aria-describedby="basic-addon" />
+                        </div>
+
+                        <div className={`${styles.home_selectGroup, styles.home_input} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <span className="input-group-text" >Number</span>
+                            </div>
+                            <input type="tel" id="phone" className={`form-control`} {...register("phone", { required: true })} placeholder="111-111-1111" aria-label="Phone Number" aria-describedby="basic-addon" />
+
+
+                        </div>
+                        <div className={`${styles.home_messageContainer}`}>
+
+                            {errors.phone && <div className={`${styles.home_message}`}>Phone number is required</div>}
+                        </div>
+
+
+
+
 
                         <h2 className={styles.title}>Pick Your Plate!</h2>
-                        {content.selects.map((select, key) => {
+                        {/* {content.selects.map((select, key) => {
                             return (
                                 <div key={key}
                                     className={`${styles.home_selectGroup} input-group mb-3`}>
@@ -74,13 +113,41 @@ const OrderForm = () => {
                                         className={`${styles.home_select} custom-select" id="inputGroupSelect`}
                                     >
                                         <option className={styles.home_option}>{select.placeholder}</option>
-                                        {/* {proteinArr && proteinArr.map((item) => <option key={item}>{item}</option>)} */}
+                                        {proteinArr && proteinArr.map((item) => <option key={item}>{item}</option>)}
                                     </select>
-                                    {/* {errors.protein && <p className={`${styles.home_message}`}>Protein is required</p>} */}
+                                    {errors.protein && <p className={`${styles.home_message}`}>Protein is required</p>}
                                 </div>
                             )
                         })
-                        }
+                        } */}
+
+                        <div className={`${styles.home_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.homeLabel} input-group-text`} htmlFor="inputGroupSelect01">Protein</label>
+                            </div>
+                            <select {...register("food__protein")} className={`${styles.home_select} custom-select" id="inputGroupSelect01`}>
+                                <option className={styles.home_option} >Choose...</option>
+
+                                {proteins}
+
+
+                            </select>
+                        </div>
+
+                        <div className={`${styles.home_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.homeLabel} input-group-text`} htmlFor="inputGroupSelect01">Dessert</label>
+                            </div>
+                            <select {...register("food__dessert")} className={`${styles.home_select} custom-select" id="inputGroupSelect01`}>
+                                <option className={styles.home_option} >Choose...</option>
+
+                                {desserts}
+
+
+                            </select>
+                        </div>
+
+            
 
                         <div className={styles.home_submitButton_container}>
 
