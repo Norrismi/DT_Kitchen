@@ -2,6 +2,7 @@
 import { db } from '../../utils/firebase'
 import firebase from "firebase/app";
 import styles from '../../styles/Home.module.css'
+import FormSuccess from './FormSuccess';
 import { useForm } from "react-hook-form";
 import date from 'date-and-time';
 import { useState, useEffect } from 'react'
@@ -16,6 +17,8 @@ const OrderForm = () => {
     const [proteinItem, setProteinItem] = useState();
     const [dessertItem, setDessertItem] = useState();
 
+    const arrTotalPrice = []
+
 
     let firestore = firebase.firestore().collection('days')
     const now = new Date();
@@ -25,7 +28,7 @@ const OrderForm = () => {
     useEffect(() => {
         firestore.doc('monday').collection('protein').onSnapshot(item => { setProteinItem(item.docs.map(a => a.data().item)) })
 
-         firestore.doc('monday').collection('dessert').onSnapshot(item => { setDessertItem(item.docs.map(a => a.data().item)) })
+        firestore.doc('monday').collection('dessert').onSnapshot(item => { setDessertItem(item.docs.map(a => a.data().item)) })
 
 
     }, []);
@@ -35,23 +38,24 @@ const OrderForm = () => {
 
 
 
-    if (isSubmitSuccessful) return <h2>Your form was submitted</h2>
+    if (isSubmitSuccessful) return <FormSuccess />
 
 
     const onSubmit = (data, e) => {
-        console.log(data)
+        //console.log(data)
+        arrTotalPrice.push(
+            Number(data.food__dessert.split('$').pop()),
+            Number(data.food__protein.split('$').pop())
+        )
+
 
         db.collection('New Order').add({
             ...data,
+            totalPrice: arrTotalPrice.reduce((a, b) => a + b),
             messageSent: firebase.firestore.FieldValue.serverTimestamp()
+
         })
     }
-
-
-
-
- 
-
 
 
     return (
@@ -147,7 +151,7 @@ const OrderForm = () => {
                             </select>
                         </div>
 
-            
+
 
                         <div className={styles.home_submitButton_container}>
 
