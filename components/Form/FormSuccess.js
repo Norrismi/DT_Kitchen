@@ -8,6 +8,9 @@ const FormSuccess = () => {
 
     const [totalPrice, setTotalPrice] = useState()
 
+    const [protein, setProtein] = useState()
+    const [dessert, setDessert] = useState()
+
     let firestore = firebase.firestore()
 
     useEffect(() => {
@@ -16,40 +19,39 @@ const FormSuccess = () => {
             .orderBy('messageSent', 'desc').limit(1)
             .onSnapshot(item => setTotalPrice(item.docs.map(a => a.data().totalPrice)))
 
+        db.collection("New Order")
+            .orderBy('messageSent', 'desc').limit(1)
+            .onSnapshot(item => setProtein(item.docs.map(a => a.data().food__protein)))
 
-        console.log(totalPrice)
+        db.collection("New Order")
+            .orderBy('messageSent', 'desc').limit(1)
+            .onSnapshot(item => setDessert(item.docs.map(a => a.data().food__dessert)))
+
+
 
 
     }, []);
 
-    //IF price is 9.5 add a zero
-
-    //else add two zeros
-
-    let dbPrice = totalPrice.split('')
 
 
-
-
-    //   if(dbPrice.length >= 2){
-    //     dbPrice.push('0')
-    //     return (dbPrice.join(''))
-    //   }else{
-    //       dbPrice.push('.','0', '0')
-    //     return (dbPrice.join(''))
-    //   }
+    const totalFormatted = (totalPrice && totalPrice.toString().includes('.')) ? `$${totalPrice}0` : `$${totalPrice}.00`
 
     return (
         <>
             <h3>
                 Your order was successfully submitted!
             </h3>
+            <div>Your ordered</div>
+            {(protein && protein != 'Choose...')
+                ? <p> {protein}</p>
+                : null}
+
+            {(dessert && dessert != 'Choose...')
+                ? <p> {dessert}</p>
+                : null}
             <p>
-                Your order total is {
-                    (dbPrice && dbPrice.length >= 2)
-                        ? dbPrice.push('0') && dbPrice.join('')
-                        : dbPrice.push('.', '0', '0') && dbPrice.join('')
-                }
+                Your order total is {totalFormatted}
+
             </p>
         </>
     );

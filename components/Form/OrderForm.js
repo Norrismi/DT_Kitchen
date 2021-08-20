@@ -42,11 +42,20 @@ const OrderForm = () => {
 
 
     const onSubmit = (data, e) => {
-        //console.log(data)
-        arrTotalPrice.push(
-            Number(data.food__dessert.split('$').pop()),
-            Number(data.food__protein.split('$').pop())
-        )
+
+
+
+        (data.food__protein && data.food__protein != 'Choose...')
+            ? arrTotalPrice.push(Number(data.food__protein.split('$').pop()))
+            : arrTotalPrice.push(0);
+
+
+        (data.food__dessert && data.food__dessert != 'Choose...')
+            ? arrTotalPrice.push(Number(data.food__dessert.split('$').pop()))
+            : arrTotalPrice.push(0)
+
+
+
 
 
         db.collection('New Order').add({
