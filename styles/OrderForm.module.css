@@ -1,0 +1,159 @@
+
+.form_card {
+    display: flex;
+    justify-content: center;
+    width: 40rem;
+    height: auto;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 50px;
+    background-color: lightgray;
+    
+  }
+  
+  .title {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .title2 {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  
+  .form_selectGroup {
+    display: flex;
+    width: 440px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .form_select {
+    display: flex;
+    justify-content: center;
+    width: 350px;
+    margin-bottom: 15px;
+    color: grey;
+    border: 1px solid lightgray;
+    padding: 0.375rem 0.75rem;
+  }
+  
+  .formLabel {
+    width: 90px;
+    margin-bottom: 15px;
+  }
+  
+  .form_option {
+    display: none;
+  }
+  
+  .form_messageContainer{
+    display: flex;
+    
+  }
+  
+  .form_message{
+    color: red;
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
+    margin-top: -12px;
+  }
+  
+  .form_submitButton_container{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+  }
+  
+  
+  @media (min-width: 280px) {
+    .form_card{
+      width: 280px;
+    }
+  
+  
+    .form_card_body{
+      width: auto;
+      padding: 5px;
+    }
+  
+    .form_input{
+      width: 270px;
+    }
+  
+    .form_selectGroup {
+      width: 270px;
+   
+    }
+  
+    .form_select {
+      flex: 1;
+      width: auto;
+      margin-bottom: 15px;
+  
+    }
+  
+    .formLabel {
+      /* width: 78px; */
+      width: 80px;
+      margin-bottom: 15px;
+    }
+  
+    .form_submitButton_container{
+      justify-content: center;
+    }
+  
+  
+  }
+  
+  @media (min-width: 300px) {
+  
+    /* getting the card centered with margin */
+    .form_card{
+      margin-top: 30px;
+    }
+  
+    .form_card{
+      width: 300px;
+      padding: 10px;
+    }
+  
+  }
+  
+  @media (min-width: 380px) {
+      
+    .form_card{
+      width: 375px;
+      align-items: center;
+    }
+  
+    .formLabel {
+      width: 80px;
+    }
+  
+    
+    .form_selectGroup {
+      width: 300px;
+      
+    }
+    .form_input{
+      width: 300px;
+    }
+  
+    .form_select {
+      width: 220px;
+  
+    }
+  
+  
+  
+  
+  }
+  
+  

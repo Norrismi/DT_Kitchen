@@ -1,0 +1,12 @@
+.carousel_container {
+    margin-bottom: 50px;
+    background-color: black;
+}
+
+.carousel_picture {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+
+}

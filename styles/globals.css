@@ -4,6 +4,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: black;
 }
 
 a {
@@ -17,19 +18,19 @@ a {
 }
 
 
-nav{
+nav {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
   padding: 10px;
-  
+
 }
 
-nav .logo{
+nav .logo {
   margin-right: auto;
 }
 
-nav a{
+nav a {
   margin-right: 10px;
 
 }

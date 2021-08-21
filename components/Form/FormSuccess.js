@@ -27,9 +27,6 @@ const FormSuccess = () => {
             .orderBy('messageSent', 'desc').limit(1)
             .onSnapshot(item => setDessert(item.docs.map(a => a.data().food__dessert)))
 
-
-
-
     }, []);
 
 
