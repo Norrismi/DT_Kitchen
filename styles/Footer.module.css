@@ -1,0 +1,37 @@
+.footer_container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: black;
+}
+
+.icon_container{
+    display: flex;
+    justify-content: center;
+}
+
+.footer_icons {
+    color: lightgrey;
+    padding: 10px;
+    font-size: 30px;
+    display: flex;
+    cursor: pointer;
+    margin-top: 20px;
+
+}
+
+.footer_icons:hover {
+    color: red;
+
+}
+
+.footer_link{
+    text-decoration: none;
+}
+
+.footer_text{
+    display: flex;
+    justify-content: center;
+    color: lightgrey;
+}
+

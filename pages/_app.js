@@ -4,6 +4,7 @@ import Layout from '../components/Layout'
 
 // add bootstrap css 
 import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-icons/font/bootstrap-icons.css'
 
 function MyApp({ Component, pageProps }) {
   return (
