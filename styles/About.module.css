@@ -1,0 +1,39 @@
+.about_container {
+    background-color: black;
+    margin-bottom: -10px;
+    color: lightgrey;
+    padding: 20px;
+}
+
+.about_titleContainer {
+    margin: 20px 0 40px 0;
+}
+
+.about_title {
+    display: flex;
+    justify-content: center;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+.row_paragraph {
+    display: flex;
+    align-items: center;
+    flex-basis: 85%;
+    padding: 0 20px 0 20px;
+}
+
+.row_picture {
+    padding: 0 20px 0 20px;
+    max-width: 50%;
+
+}
+
+
+
+
+@media (min-width: 280px) {}
