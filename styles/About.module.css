@@ -14,7 +14,7 @@
     justify-content: center;
 }
 
-.row {
+.info_group {
     display: flex;
     flex-direction: row;
     margin-top: 20px;
@@ -27,13 +27,104 @@
     padding: 0 20px 0 20px;
 }
 
-.row_picture {
+.imageContainer_rasta,
+.imageContainer_salmon,
+.imageContainer_brown {
     padding: 0 20px 0 20px;
     max-width: 50%;
 
 }
 
+.imageContainer_rasta_mobile,
+.imageContainer_salmon_mobile,
+.imageContainer_brown_mobile {
+    display: none;
+}
+
+/* 
+Mobile
+* Paragraphs on top and pictures at bottom 
+* Icons as some seperators?
+
+*/
 
 
 
-@media (min-width: 280px) {}
+
+@media (min-width: 280px) {
+    .about_container {
+        background-color: black;
+        margin-bottom: -10px;
+        color: lightgrey;
+        padding: 5px;
+    }
+
+    .about_titleContainer {
+        margin: 20px 0 20px 0;
+    }
+
+    .info_group {
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+
+    }
+
+
+    .imageContainer_rasta,
+    .imageContainer_salmon,
+    .imageContainer_brown {
+        display: none;
+
+    }
+
+    .imageContainer_rasta_mobile,
+    .imageContainer_salmon_mobile,
+    .imageContainer_brown_mobile {
+        display: flex;
+        justify-content: center;
+        margin: 20px;
+    }
+
+    .aboutIcon_container{
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        font-size: 30px;
+    }
+
+}
+
+
+
+@media (min-width: 768px) {
+
+    .aboutIcon_container{
+        display: none;
+    }
+    .info_group {
+        display: flex;
+        flex-direction: row;
+        margin-top: 20px;
+    }
+
+    .imageContainer_rasta,
+    .imageContainer_salmon,
+    .imageContainer_brown {
+        display: flex;
+
+    }
+
+    .imageContainer_rasta_mobile,
+    .imageContainer_salmon_mobile,
+    .imageContainer_brown_mobile {
+        display: none;
+        justify-content: center;
+        margin: 20px;
+    }
+
+
+
+
+
+}

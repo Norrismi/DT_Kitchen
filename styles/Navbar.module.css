@@ -1,6 +1,6 @@
 .nav_container {
-    /* display: flex;
-    justify-content: center; */
+    display: flex;
+    justify-content: center;
     background-color: black;
 }
 
@@ -15,4 +15,41 @@
 .nav_link:hover {
     color: #8D0D06;
 
+}
+
+
+@media (min-width: 280px) {
+    .nav_container {
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .nav_link {
+        font-size: 20px;
+    
+    }
+}
+
+@media (min-width: 375px) {
+    .nav_link {
+        font-size: 25px;
+    
+    }
+}
+
+@media (min-width: 768px) {
+
+    .nav_container {
+        display: flex;
+        justify-content: flex-end;
+    }
+    .nav_link {
+        font-size: 30px;    
+    }
+}
+
+@media (min-width: 1024px) {
+    .nav_link {
+        font-size: 35px;
+    
+    }
 }

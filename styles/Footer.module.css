@@ -3,6 +3,7 @@
     justify-content: center;
     flex-direction: column;
     background-color: black;
+    margin-bottom: 30px;
 }
 
 .icon_container{
