@@ -1,20 +1,65 @@
 .NotFound_container{
+    background-color: black;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 15%;
+    /* margin-top: 15%; */
+    min-height: 100vh;
   
 }
 
 .NotFound_text{
     display: flex;
+    color: lightgrey;
     justify-content: center;
     font-size: 50px;
+    margin-bottom: 40px;
 }
 
 .NotFound_button{
     display: flex;
     justify-content: center;
+    background-color: #8d0d06;
+    color: lightgrey;
+ 
+  
+}
+
+.NotFound_button:hover{
+    background-color: lightgrey;
+    color: #8d0d06;
+  
+}
+
+@media (min-width: 280px) {
+    .NotFound_text{
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+  
+}
+
+@media (min-width: 320px) {
+    .NotFound_text{
+        font-size: 25px;
+        margin-bottom: 20px;
+    }
+  
+}
+
+@media (min-width: 375px) {
+    .NotFound_text{
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+  
+}
+
+@media (min-width: 768px) {
+    .NotFound_text{
+        font-size: 50px;
+        margin-bottom: 20px;
+    }
   
 }
