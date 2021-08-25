@@ -14,8 +14,8 @@ export default function Home() {
 
   return (
 
-    <div  className={`${styles.home_bannerContainer}`}>
-    <div className={`${styles.home_bannerContainer} `}>
+    <div  className={styles.home_bannerContainer}>
+    <div className={styles.home_bannerContainer}>
 
     <Image src={dt_kitchen_spice} className={`${styles.home_banner} `} alt="Intro Banner" />
     </div>

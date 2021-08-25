@@ -1,5 +1,6 @@
 import { db } from '../../utils/firebase'
 import firebase from "firebase/app";
+import styles from '../../styles/FormSuccess.module.css'
 import { useState, useEffect } from 'react'
 
 
@@ -34,23 +35,34 @@ const FormSuccess = () => {
     const totalFormatted = (totalPrice && totalPrice.toString().includes('.')) ? `$${totalPrice}0` : `$${totalPrice}.00`
 
     return (
-        <>
-            <h3>
-                Your order was successfully submitted!
-            </h3>
-            <div>Your ordered</div>
-            {(protein && protein != 'Choose...')
-                ? <p> {protein}</p>
-                : null}
+        <div className={`${styles.success} card`}>
+            <div className={styles.success_container}>
 
-            {(dessert && dessert != 'Choose...')
-                ? <p> {dessert}</p>
-                : null}
-            <p>
-                Your order total is {totalFormatted}
+                <div className={styles.success_header}>
+                    Your order was successfully submitted!
+                </div>
+                {/* <p>Your order was...</p> */}
+                <div className={styles.ordered_items}>
 
-            </p>
-        </>
+                    {(protein && protein != 'Choose...')
+                        ? <li> {protein}</li>
+                        : null}
+
+                    {(dessert && dessert != 'Choose...')
+                        ? <li> {dessert}</li>
+                        : null}
+                </div>
+
+                <div className={styles.order_total}>
+                    <div>
+                        Your order total is {totalFormatted}
+                    </div>
+                    <div>
+                        Cash or Cashapp accepted!
+                    </div>
+                </div>
+            </div>
+        </div>
     );
 }
 
