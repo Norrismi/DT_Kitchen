@@ -2,9 +2,9 @@ import React from 'react';
 import styles from '../styles/Footer.module.css'
 import date from 'date-and-time';
 
-import { faCarrot } from '@fortawesome/free-solid-svg-icons'
-import { faSnapchatSquare} from '@fortawesome/free-solid-svg-icons'
-import { faFacebook} from '@fortawesome/free-solid-svg-icons'
+
+import { faFacebookF, faSnapchatGhost, faInstagram } from '@fortawesome/free-brands-svg-icons'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Footer = () => {
@@ -21,27 +21,16 @@ const Footer = () => {
             <div className={styles.icon_container}>
 
                 <a className={styles.footer_link} href="https://www.facebook.com/davontayt" target="_blank" rel="noopener noreferrer" >
-                    <i className={`${styles.footer_icons} bi bi-facebook`}></i>
+                <FontAwesomeIcon icon={faFacebookF} className={styles.footer_icons} />
                 </a>
 
                 <a className={styles.footer_link} href="https://google.com/" target="_blank" rel="noopener noreferrer" >
-                    <i className={`${styles.footer_icons} bi bi-instagram`}></i>
+                <FontAwesomeIcon icon={faInstagram} className={styles.footer_icons} />
                 </a>
 
                 <a className={styles.footer_link} href="https://google.com/" target="_blank" rel="noopener noreferrer" >
-                <FontAwesomeIcon icon={faCarrot} className={styles.footer_icons} />
+                    <FontAwesomeIcon icon={faSnapchatGhost} className={styles.footer_icons} />
                 </a>
-
-                <a className={styles.footer_link} href="https://google.com/" target="_blank" rel="noopener noreferrer" >
-                    <i className={`${styles.footer_icons} bi bi-twitter`}></i>
-                </a>
-
-                <FontAwesomeIcon icon={faSnapchatSquare} className={styles.footer_icons} />
-                <FontAwesomeIcon icon={faFacebook} className={styles.footer_icons} />
-                <FontAwesomeIcon icon={faCarrot} className={styles.footer_icons} />
-            
-
-            
 
             </div>
 
