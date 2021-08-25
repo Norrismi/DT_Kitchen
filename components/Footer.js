@@ -2,9 +2,7 @@ import React from 'react';
 import styles from '../styles/Footer.module.css'
 import date from 'date-and-time';
 
-
 import { faFacebookF, faSnapchatGhost, faInstagram } from '@fortawesome/free-brands-svg-icons'
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Footer = () => {
