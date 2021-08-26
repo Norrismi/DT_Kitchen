@@ -4,34 +4,27 @@ import firebase from "firebase/app";
 import styles from '../../styles/OrderForm.module.css'
 import FormSuccess from './FormSuccess';
 import { useForm } from "react-hook-form";
-import date from 'date-and-time';
 import { useState, useEffect } from 'react'
 
-// scheduled form
 
-const OrderForm = () => {
+
+const CustomForm = () => {
 
     const { register, handleSubmit, formState: { errors, isSubmitSuccessful } } = useForm();
 
-
     const [proteinItem, setProteinItem] = useState();
     const [dessertItem, setDessertItem] = useState();
+    const [starchItem, setStarchItem] = useState();
 
     const arrTotalPrice = []
 
-
-    const now = new Date();
-    let day = date.format(now, 'dddd').toLowerCase();
-
-    const firestore = firebase.firestore().collection('days')
+    const firestore = firebase.firestore().collection('custom')
 
 
     useEffect(() => {
 
-
-        firestore.doc('monday').collection('protein').onSnapshot(item => { setProteinItem(item.docs.map(a => a.data().item)) })
-
         firestore.doc('monday').collection('dessert').onSnapshot(item => { setDessertItem(item.docs.map(a => a.data().item)) })
+        firestore.doc('monday').collection('protein').onSnapshot(item => { setProteinItem(item.docs.map(a => a.data().item)) })
 
 
     }, []);
@@ -39,10 +32,11 @@ const OrderForm = () => {
     const proteins = proteinItem && proteinItem.map(item => <option key={item}>{item} </option>)
     const desserts = dessertItem && dessertItem.map(item => <option key={item}>{item} </option>)
 
+
     if (isSubmitSuccessful) return <FormSuccess />
 
-    const onSubmit = (data, e) => {
 
+    const onSubmit = (data, e) => {
         (data.food__protein && data.food__protein != 'Choose...')
             ? arrTotalPrice.push(Number(data.food__protein.split('$').pop()))
             : arrTotalPrice.push(0);
@@ -55,17 +49,18 @@ const OrderForm = () => {
 
         db.collection('New Order').add({
             ...data,
-            totalPrice: arrTotalPrice.reduce((arr, ac) => arr + ac),
+            totalPrice: arrTotalPrice.reduce((arr, ac) => arr + ac).toFixed(2),
             messageSent: firebase.firestore.FieldValue.serverTimestamp()
 
         })
+
     }
 
 
-    return (
 
+    return (
         <>
-{/* 
+
             <form onSubmit={handleSubmit((onSubmit))}>
 
                 <div className={`${styles.form_card} card form_card `}>
@@ -109,6 +104,7 @@ const OrderForm = () => {
 
                         <h2 className={styles.title}>Pick Your Plate!</h2>
 
+
                         <div className={`${styles.form_selectGroup} input-group mb-3`}>
                             <div className="input-group-prepend">
                                 <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupSelect01">Protein</label>
@@ -143,35 +139,10 @@ const OrderForm = () => {
                         </div>
                     </div>
                 </div>
-            </form> */}
-
-
+            </form>
 
         </>
-
-
-);
+    );
 }
 
-export default OrderForm;
-
-{/* {content.selects.map((select, key) => {
-    return (
-        <div key={key}
-            className={`${styles.form_selectGroup} input-group mb-3`}>
-            <div className="input-group-prepend">
-                <label
-                    className={`${styles.formLabel} input-group-text`}
-                    htmlFor="inputGroupSelect01">{select.label}</label>
-            </div>
-            <select {...register(`${select.registerName}`)}
-                className={`${styles.form_select} custom-select" id="inputGroupSelect`}
-            >
-                <option className={styles.form_option}>{select.placeholder}</option>
-                {proteinArr && proteinArr.map((item) => <option key={item}>{item}</option>)}
-            </select>
-            {errors.protein && <p className={`${styles.form_message}`}>Protein is required</p>}
-        </div>
-    )
-})
-} */}
+export default CustomForm;
