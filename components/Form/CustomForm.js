@@ -23,8 +23,8 @@ const CustomForm = () => {
 
     useEffect(() => {
 
-        firestore.doc('monday').collection('dessert').onSnapshot(item => { setDessertItem(item.docs.map(a => a.data().item)) })
-        firestore.doc('monday').collection('protein').onSnapshot(item => { setProteinItem(item.docs.map(a => a.data().item)) })
+        firestore.doc('custom').collection('dessert').onSnapshot(item => { setDessertItem(item.docs.map(a => a.data().item)) })
+        firestore.doc('custom').collection('protein').onSnapshot(item => { setProteinItem(item.docs.map(a => a.data().item)) })
 
 
     }, []);

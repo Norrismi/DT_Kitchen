@@ -65,7 +65,7 @@ const OrderForm = () => {
     return (
 
         <>
-{/* 
+
             <form onSubmit={handleSubmit((onSubmit))}>
 
                 <div className={`${styles.form_card} card form_card `}>
@@ -143,7 +143,7 @@ const OrderForm = () => {
                         </div>
                     </div>
                 </div>
-            </form> */}
+            </form>
 
 
 

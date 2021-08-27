@@ -1,40 +1,28 @@
 .success {
     color: lightgray;
-    margin: 150px 150px;
+    margin: 150px 0  150px 0;
     padding: 40px 0 60px 0;
     background-color: black;
     border-color: rgb(83, 211, 83);
+    width: 70%;
+    margin-right: auto;
+    margin-left: auto;
 
   
 }
 
-.success_container {
-    color: lightgray;
-    flex-direction: column;
-    /* text-align: center; */
-
-    /* margin-right: auto;
-    margin-left: auto; */
-
-}
-
 
 .success_header {
-    display: flex;
-    justify-content: center;
+    text-align: center;
     color: rgb(83, 211, 83);
     margin-bottom: 20px;
     font-size: 30px;
-
-
 }
 
 .ordered_items {
     margin-bottom: 20px;
     margin-right: auto;
     margin-left: auto;
-    
-    /* width: 20%; */
     text-align: center;
 
 }
@@ -44,3 +32,45 @@
     text-align: center;
     font-size: 20px;
 }
+
+
+@media (min-width: 280px) {
+    .success {
+        margin: 80px 0 75px 0;
+        
+        margin-right: auto;
+        margin-left: auto;
+        padding: 10px;
+        width: 80%;
+    }
+
+    .success_header {
+        font-size: 20px;
+    
+    }
+    .order_total {
+        font-size: 15px;
+    }
+}
+
+
+@media (min-width: 768px) {
+    .success {
+     
+        margin: 150px 0  150px 0;
+        padding: 40px 0 60px 0;
+        background-color: black;
+        border-color: rgb(83, 211, 83);
+        width: 70%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .success_header {
+        font-size: 30px;
+    }
+    .order_total {
+        font-size: 20px;
+    }
+}
+
