@@ -1,10 +1,10 @@
-
 import { db } from '../../utils/firebase'
 import firebase from "firebase/app";
 import styles from '../../styles/OrderForm.module.css'
 import FormSuccess from './FormSuccess';
 import { useForm } from "react-hook-form";
 import { useState, useEffect } from 'react'
+import emailjs from 'emailjs-com'
 
 
 
@@ -37,6 +37,7 @@ const CustomForm = () => {
 
 
     const onSubmit = (data, e) => {
+
         (data.food__protein && data.food__protein != 'Choose...')
             ? arrTotalPrice.push(Number(data.food__protein.split('$').pop()))
             : arrTotalPrice.push(0);
@@ -53,6 +54,39 @@ const CustomForm = () => {
             messageSent: firebase.firestore.FieldValue.serverTimestamp()
 
         })
+
+        console.log(data)
+
+
+
+///////////////////////////////////
+        // DATA and spreading DATA doesn't work
+        // only recording protein, doesn't matter on order
+
+
+        const { name, phone, email, food__dessert, food__protein, totalPrice, messageSent } = data
+
+        const YOUR_SERVICE_ID = process.env.NEXT_PUBLIC_EmailJS_YOUR_SERVICE_ID;
+        const YOUR_TEMPLATE_ID = process.env.NEXT_PUBLIC_EmailJS_YOUR_TEMPLATE_ID;
+        const YOUR_USER_ID = process.env.NEXT_PUBLIC_EmailJS_YOUR_USER_ID;
+
+        let templateParams = {
+            name,
+            phone,
+            email,
+            food__dessert,
+            food__protein,
+            totalPrice,
+            messageSent
+
+        }
+
+        emailjs.send(YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, templateParams, YOUR_USER_ID)
+            .then((result) => {
+                console.log(result.text);
+            }, (error) => {
+                console.log(error.text);
+            });
 
     }
 
@@ -107,9 +141,9 @@ const CustomForm = () => {
 
                         <div className={`${styles.form_selectGroup} input-group mb-3`}>
                             <div className="input-group-prepend">
-                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupSelect01">Protein</label>
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Protein</label>
                             </div>
-                            <select {...register("food__protein")} className={`${styles.form_select} custom-select" id="inputGroupSelect01`}>
+                            <select {...register("food__protein")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
                                 <option className={styles.form_option} >Choose...</option>
 
                                 {proteins}
@@ -120,9 +154,9 @@ const CustomForm = () => {
 
                         <div className={`${styles.form_selectGroup} input-group mb-3`}>
                             <div className="input-group-prepend">
-                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupSelect01">Dessert</label>
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupDessert">Dessert</label>
                             </div>
-                            <select {...register("food__dessert")} className={`${styles.form_select} custom-select" id="inputGroupSelect01`}>
+                            <select {...register("food__dessert")} className={`${styles.form_select} custom-select" id="inputGroupDessert`}>
                                 <option className={styles.form_option} >Choose...</option>
 
                                 {desserts}

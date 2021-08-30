@@ -6,6 +6,7 @@ import FormSuccess from './FormSuccess';
 import { useForm } from "react-hook-form";
 import date from 'date-and-time';
 import { useState, useEffect } from 'react'
+import emailjs from 'emailjs-com'
 
 // scheduled form
 
@@ -59,6 +60,32 @@ const OrderForm = () => {
             messageSent: firebase.firestore.FieldValue.serverTimestamp()
 
         })
+
+///////////////////////////
+
+        const { name, phone, email, food__dessert, food__protein, totalPrice, messageSent } = data
+
+        const YOUR_SERVICE_ID = process.env.NEXT_PUBLIC_EmailJS_YOUR_SERVICE_ID;
+        const YOUR_TEMPLATE_ID = process.env.NEXT_PUBLIC_EmailJS_YOUR_TEMPLATE_ID;
+        const YOUR_USER_ID = process.env.NEXT_PUBLIC_EmailJS_YOUR_USER_ID;
+
+        let templateParams = {
+            name,
+            phone,
+            email,
+            food__dessert,
+            food__protein,
+            totalPrice,
+            messageSent
+
+        }
+
+        emailjs.send(YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, templateParams, YOUR_USER_ID)
+            .then((result) => {
+                console.log(result.text);
+            }, (error) => {
+                console.log(error.text);
+            });
     }
 
 
