@@ -32,7 +32,7 @@ const FormSuccess = () => {
 
 
 
-    const totalFormatted = (totalPrice && totalPrice.toString().includes('.')) ? `$${totalPrice}0` : `$${totalPrice}.00`
+    const totalFormatted = (totalPrice && totalPrice.toString().includes('.')) ? `$${totalPrice}` : `$${totalPrice}.00`
 
     return (
         <div className={`${styles.success} card`}>

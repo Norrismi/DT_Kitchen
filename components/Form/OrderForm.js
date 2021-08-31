@@ -18,6 +18,7 @@ const OrderForm = () => {
     const [proteinItem, setProteinItem] = useState();
     const [dessertItem, setDessertItem] = useState();
 
+
     const arrTotalPrice = []
 
 
@@ -42,28 +43,31 @@ const OrderForm = () => {
 
     if (isSubmitSuccessful) return <FormSuccess />
 
+    
     const onSubmit = (data, e) => {
+        e.preventDefault();
 
         (data.food__protein && data.food__protein != 'Choose...')
-            ? arrTotalPrice.push(Number(data.food__protein.split('$').pop()))
-            : arrTotalPrice.push(0);
-
-
+        ? arrTotalPrice.push(Number(data.food__protein.split('$').pop()))
+        : arrTotalPrice.push(0);
+        
+        
         (data.food__dessert && data.food__dessert != 'Choose...')
-            ? arrTotalPrice.push(Number(data.food__dessert.split('$').pop()))
-            : arrTotalPrice.push(0)
-
+        ? arrTotalPrice.push(Number(data.food__dessert.split('$').pop()))
+        : arrTotalPrice.push(0)
+        
+        const total = arrTotalPrice.reduce((arr, ac) => arr + ac).toFixed(2)
 
         db.collection('New Order').add({
             ...data,
-            totalPrice: arrTotalPrice.reduce((arr, ac) => arr + ac),
+            totalPrice: total,
             messageSent: firebase.firestore.FieldValue.serverTimestamp()
-
+            
         })
-
-///////////////////////////
-
-        const { name, phone, email, food__dessert, food__protein, totalPrice, messageSent } = data
+        
+        
+        const { name, phone, email, food__dessert, food__protein } = data
+        console.log(food__dessert)
 
         const YOUR_SERVICE_ID = process.env.NEXT_PUBLIC_EmailJS_YOUR_SERVICE_ID;
         const YOUR_TEMPLATE_ID = process.env.NEXT_PUBLIC_EmailJS_YOUR_TEMPLATE_ID;
@@ -75,17 +79,14 @@ const OrderForm = () => {
             email,
             food__dessert,
             food__protein,
-            totalPrice,
-            messageSent
-
         }
 
-        emailjs.send(YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, templateParams, YOUR_USER_ID)
-            .then((result) => {
-                console.log(result.text);
-            }, (error) => {
-                console.log(error.text);
-            });
+        // emailjs.send(YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, templateParams, YOUR_USER_ID)
+        //     .then((result) => {
+        //         console.log(result.text);
+        //     }, (error) => {
+        //         console.log(error.text);
+        //     });
     }
 
 

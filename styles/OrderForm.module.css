@@ -88,21 +88,27 @@
     }
   
     .form_selectGroup {
+      /* width: 300px; */
       width: 270px;
+
    
     }
   
     .form_select {
-      flex: 1;
-      width: auto;
+      /* flex: 1;
+      width: auto; */
+      width: 200px;
       margin-bottom: 15px;
   
     }
-  
+
+
+  /* ////////// */
     .formLabel {
-      /* width: 78px; */
-      width: 80px;
       margin-bottom: 15px;
+
+      padding: 5px;
+      width: 70px;
     }
   
     .form_submitButton_container{
@@ -114,7 +120,7 @@
   
   @media (min-width: 300px) {
   
-    /* getting the card centered with margin */
+    
     .form_card{
       margin-top: 30px;
     }
@@ -122,6 +128,11 @@
     .form_card{
       width: 300px;
       padding: 10px;
+    }
+
+    .formLabel {
+      padding: 7px;
+      width: 70px;
     }
   
   }

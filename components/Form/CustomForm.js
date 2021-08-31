@@ -36,6 +36,37 @@ const CustomForm = () => {
     if (isSubmitSuccessful) return <FormSuccess />
 
 
+
+    // function SendEmail(object) {
+
+    //     const { name, phone, email, food__dessert, food__protein, totalPrice, messageSent } = data
+
+    //     const YOUR_SERVICE_ID = process.env.NEXT_PUBLIC_EmailJS_YOUR_SERVICE_ID;
+    //     const YOUR_TEMPLATE_ID = process.env.NEXT_PUBLIC_EmailJS_YOUR_TEMPLATE_ID;
+    //     const YOUR_USER_ID = process.env.NEXT_PUBLIC_EmailJS_YOUR_USER_ID;
+
+    //     let templateParams = {
+    //         name,
+    //         phone,
+    //         email,
+    //         food__dessert,
+    //         food__protein,
+    //         totalPrice,
+    //         messageSent
+
+    //     }
+    //     emailjs.send(YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, templateParams, YOUR_USER_ID)
+    //         .then((result) => {
+    //             console.log(result.text)
+    //         }, (error) => {
+    //             console.log(error.text)
+    //         })
+    // }
+
+
+    //////////////////////////
+
+
     const onSubmit = (data, e) => {
 
         (data.food__protein && data.food__protein != 'Choose...')
@@ -47,46 +78,47 @@ const CustomForm = () => {
             ? arrTotalPrice.push(Number(data.food__dessert.split('$').pop()))
             : arrTotalPrice.push(0)
 
+        const total = arrTotalPrice.reduce((arr, ac) => arr + ac).toFixed(2)
 
         db.collection('New Order').add({
             ...data,
-            totalPrice: arrTotalPrice.reduce((arr, ac) => arr + ac).toFixed(2),
+            totalPrice: total,
             messageSent: firebase.firestore.FieldValue.serverTimestamp()
 
         })
 
-        console.log(data)
 
 
 
-///////////////////////////////////
+
+        ///////////////////////////////////
         // DATA and spreading DATA doesn't work
         // only recording protein, doesn't matter on order
 
 
-        const { name, phone, email, food__dessert, food__protein, totalPrice, messageSent } = data
+        // const { name, phone, email, food__dessert, food__protein, totalPrice, messageSent } = data
 
-        const YOUR_SERVICE_ID = process.env.NEXT_PUBLIC_EmailJS_YOUR_SERVICE_ID;
-        const YOUR_TEMPLATE_ID = process.env.NEXT_PUBLIC_EmailJS_YOUR_TEMPLATE_ID;
-        const YOUR_USER_ID = process.env.NEXT_PUBLIC_EmailJS_YOUR_USER_ID;
+        // const YOUR_SERVICE_ID = process.env.NEXT_PUBLIC_EmailJS_YOUR_SERVICE_ID;
+        // const YOUR_TEMPLATE_ID = process.env.NEXT_PUBLIC_EmailJS_YOUR_TEMPLATE_ID;
+        // const YOUR_USER_ID = process.env.NEXT_PUBLIC_EmailJS_YOUR_USER_ID;
 
-        let templateParams = {
-            name,
-            phone,
-            email,
-            food__dessert,
-            food__protein,
-            totalPrice,
-            messageSent
+        // let templateParams = {
+        //     name,
+        //     phone,
+        //     email,
+        //     food__dessert,
+        //     food__protein,
+        //     totalPrice,
+        //     messageSent
 
-        }
+        // }
 
-        emailjs.send(YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, templateParams, YOUR_USER_ID)
-            .then((result) => {
-                console.log(result.text);
-            }, (error) => {
-                console.log(error.text);
-            });
+        // emailjs.send(YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, templateParams, YOUR_USER_ID)
+        //     .then((result) => {
+        //         console.log(result.text);
+        //     }, (error) => {
+        //         console.log(error.text);
+        //     });
 
     }
 
