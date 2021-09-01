@@ -15,6 +15,19 @@ const CustomForm = () => {
     const [proteinItem, setProteinItem] = useState();
     const [dessertItem, setDessertItem] = useState();
     const [starchItem, setStarchItem] = useState();
+    const [greenItem, setGreenItem] = useState();
+    const [sideItem, setSideItem] = useState();
+    const [drinkItem, setDrinkItem] = useState();
+
+
+    const selectCategories = [proteinItem, dessertItem, starchItem, greenItem, sideItem, drinkItem]
+
+    const label = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6',]
+
+    // const type = ['protein', 'starch', 'green', 'dessert', 'side', 'drink' ]
+
+
+
 
     const arrTotalPrice = []
 
@@ -23,14 +36,43 @@ const CustomForm = () => {
 
     useEffect(() => {
 
+        const selectCategories = [proteinItem, dessertItem, starchItem, greenItem, sideItem, drinkItem]
+
         firestore.doc('custom').collection('dessert').onSnapshot(item => { setDessertItem(item.docs.map(a => a.data().item)) })
         firestore.doc('custom').collection('protein').onSnapshot(item => { setProteinItem(item.docs.map(a => a.data().item)) })
+        firestore.doc('custom').collection('starch').onSnapshot(item => { setStarchItem(item.docs.map(a => a.data().item)) })
+
+        //firestore.doc('custom').collection('protein').onSnapshot(labelName => console.log(labelName.query._delegate._path.segments.pop()))
 
 
     }, []);
 
     const proteins = proteinItem && proteinItem.map(item => <option key={item}>{item} </option>)
     const desserts = dessertItem && dessertItem.map(item => <option key={item}>{item} </option>)
+    const starches = starchItem && starchItem.map(item => <option key={item}>{item} </option>)
+
+
+    // const showSelect = selectCategories.map(category => (category && category.length) ?
+
+    // <div className={`${styles.form_selectGroup} input-group mb-3`}>
+    //         <div className="input-group-prepend">
+    //         {/* {label.map(a => <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein" key={a}> {a}  </label>)} */}
+
+
+
+    //         </div>
+    //         <select {...register('protein')} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+    //             <option className={styles.form_option} >Choose...</option>
+
+    //                 {category.map(item => <option key={item}>{item} </option>)}
+
+    //         </select>
+    //     </div>
+
+    //     : null)
+
+
+
 
 
     if (isSubmitSuccessful) return <FormSuccess />
@@ -69,14 +111,16 @@ const CustomForm = () => {
 
     const onSubmit = (data, e) => {
 
-        (data.food__protein && data.food__protein != 'Choose...')
-            ? arrTotalPrice.push(Number(data.food__protein.split('$').pop()))
-            : arrTotalPrice.push(0);
+
+        const { email, name, phone, ...newData } = data
+
+        for (const prop in newData) {
+            (newData[prop] != 'Choose...')
+                ? arrTotalPrice.push(Number(newData[prop].split('$').pop()))
+                : arrTotalPrice.push(0);
+        }
 
 
-        (data.food__dessert && data.food__dessert != 'Choose...')
-            ? arrTotalPrice.push(Number(data.food__dessert.split('$').pop()))
-            : arrTotalPrice.push(0)
 
         const total = arrTotalPrice.reduce((arr, ac) => arr + ac).toFixed(2)
 
@@ -86,6 +130,8 @@ const CustomForm = () => {
             messageSent: firebase.firestore.FieldValue.serverTimestamp()
 
         })
+
+
 
 
 
@@ -121,6 +167,9 @@ const CustomForm = () => {
         //     });
 
     }
+
+
+
 
 
 
@@ -171,6 +220,10 @@ const CustomForm = () => {
                         <h2 className={styles.title}>Pick Your Plate!</h2>
 
 
+                        {/* {showSelect} */}
+                        {/* {show} */}
+
+
                         <div className={`${styles.form_selectGroup} input-group mb-3`}>
                             <div className="input-group-prepend">
                                 <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Protein</label>
@@ -192,6 +245,19 @@ const CustomForm = () => {
                                 <option className={styles.form_option} >Choose...</option>
 
                                 {desserts}
+
+
+                            </select>
+                        </div>
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Starch</label>
+                            </div>
+                            <select {...register("food__starch")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {starches}
 
 
                             </select>

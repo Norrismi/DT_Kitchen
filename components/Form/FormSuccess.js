@@ -11,6 +11,9 @@ const FormSuccess = () => {
 
     const [protein, setProtein] = useState()
     const [dessert, setDessert] = useState()
+    const [starch, setStarch] = useState()
+
+    ////////////////////////////////////////////// arr of (diff states) 
 
     let firestore = firebase.firestore()
 
@@ -27,6 +30,10 @@ const FormSuccess = () => {
         db.collection("New Order")
             .orderBy('messageSent', 'desc').limit(1)
             .onSnapshot(item => setDessert(item.docs.map(a => a.data().food__dessert)))
+
+        db.collection("New Order")
+            .orderBy('messageSent', 'desc').limit(1)
+            .onSnapshot(item => setStarch(item.docs.map(a => a.data().food__starch)))
 
     }, []);
 
@@ -50,6 +57,10 @@ const FormSuccess = () => {
 
                     {(dessert && dessert != 'Choose...')
                         ? <li> {dessert}</li>
+                        : null}
+
+                    {(starch && starch != 'Choose...')
+                        ? <li> {starch}</li>
                         : null}
                 </div>
 
