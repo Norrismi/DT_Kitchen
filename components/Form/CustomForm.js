@@ -7,7 +7,6 @@ import { useState, useEffect } from 'react'
 import emailjs from 'emailjs-com'
 
 
-
 const CustomForm = () => {
 
     const { register, handleSubmit, formState: { errors, isSubmitSuccessful } } = useForm();
@@ -20,14 +19,6 @@ const CustomForm = () => {
     const [drinkItem, setDrinkItem] = useState();
 
 
-    const selectCategories = [proteinItem, dessertItem, starchItem, greenItem, sideItem, drinkItem]
-
-    const label = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6',]
-
-    // const type = ['protein', 'starch', 'green', 'dessert', 'side', 'drink' ]
-
-
-
 
     const arrTotalPrice = []
 
@@ -35,8 +26,6 @@ const CustomForm = () => {
 
 
     useEffect(() => {
-
-        const selectCategories = [proteinItem, dessertItem, starchItem, greenItem, sideItem, drinkItem]
 
         firestore.doc('custom').collection('dessert').onSnapshot(item => { setDessertItem(item.docs.map(a => a.data().item)) })
         firestore.doc('custom').collection('protein').onSnapshot(item => { setProteinItem(item.docs.map(a => a.data().item)) })
@@ -52,26 +41,6 @@ const CustomForm = () => {
     const starches = starchItem && starchItem.map(item => <option key={item}>{item} </option>)
 
 
-    // const showSelect = selectCategories.map(category => (category && category.length) ?
-
-    // <div className={`${styles.form_selectGroup} input-group mb-3`}>
-    //         <div className="input-group-prepend">
-    //         {/* {label.map(a => <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein" key={a}> {a}  </label>)} */}
-
-
-
-    //         </div>
-    //         <select {...register('protein')} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
-    //             <option className={styles.form_option} >Choose...</option>
-
-    //                 {category.map(item => <option key={item}>{item} </option>)}
-
-    //         </select>
-    //     </div>
-
-    //     : null)
-
-
 
 
 
@@ -79,38 +48,7 @@ const CustomForm = () => {
 
 
 
-    // function SendEmail(object) {
-
-    //     const { name, phone, email, food__dessert, food__protein, totalPrice, messageSent } = data
-
-    //     const YOUR_SERVICE_ID = process.env.NEXT_PUBLIC_EmailJS_YOUR_SERVICE_ID;
-    //     const YOUR_TEMPLATE_ID = process.env.NEXT_PUBLIC_EmailJS_YOUR_TEMPLATE_ID;
-    //     const YOUR_USER_ID = process.env.NEXT_PUBLIC_EmailJS_YOUR_USER_ID;
-
-    //     let templateParams = {
-    //         name,
-    //         phone,
-    //         email,
-    //         food__dessert,
-    //         food__protein,
-    //         totalPrice,
-    //         messageSent
-
-    //     }
-    //     emailjs.send(YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, templateParams, YOUR_USER_ID)
-    //         .then((result) => {
-    //             console.log(result.text)
-    //         }, (error) => {
-    //             console.log(error.text)
-    //         })
-    // }
-
-
-    //////////////////////////
-
-
     const onSubmit = (data, e) => {
-
 
         const { email, name, phone, ...newData } = data
 
@@ -119,8 +57,6 @@ const CustomForm = () => {
                 ? arrTotalPrice.push(Number(newData[prop].split('$').pop()))
                 : arrTotalPrice.push(0);
         }
-
-
 
         const total = arrTotalPrice.reduce((arr, ac) => arr + ac).toFixed(2)
 
@@ -133,31 +69,26 @@ const CustomForm = () => {
 
 
 
+        const { food__dessert, food__protein, food__starch } = data
 
 
+       let newProtein = newData.food__protein
+       let newStarch = newData.food__starch
+       let newDessert = newData.food__dessert
+        
 
+        const YOUR_SERVICE_ID = process.env.NEXT_PUBLIC_EmailJS_YOUR_SERVICE_ID;
+        const YOUR_TEMPLATE_ID = process.env.NEXT_PUBLIC_EmailJS_YOUR_TEMPLATE_ID;
+        const YOUR_USER_ID = process.env.NEXT_PUBLIC_EmailJS_YOUR_USER_ID;
 
-        ///////////////////////////////////
-        // DATA and spreading DATA doesn't work
-        // only recording protein, doesn't matter on order
-
-
-        // const { name, phone, email, food__dessert, food__protein, totalPrice, messageSent } = data
-
-        // const YOUR_SERVICE_ID = process.env.NEXT_PUBLIC_EmailJS_YOUR_SERVICE_ID;
-        // const YOUR_TEMPLATE_ID = process.env.NEXT_PUBLIC_EmailJS_YOUR_TEMPLATE_ID;
-        // const YOUR_USER_ID = process.env.NEXT_PUBLIC_EmailJS_YOUR_USER_ID;
-
-        // let templateParams = {
-        //     name,
-        //     phone,
-        //     email,
-        //     food__dessert,
-        //     food__protein,
-        //     totalPrice,
-        //     messageSent
-
-        // }
+        let templateParams = {
+            name,
+            email,
+            phone,
+            newProtein,
+            newStarch,
+            newDessert
+        }
 
         // emailjs.send(YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, templateParams, YOUR_USER_ID)
         //     .then((result) => {
@@ -165,11 +96,7 @@ const CustomForm = () => {
         //     }, (error) => {
         //         console.log(error.text);
         //     });
-
     }
-
-
-
 
 
 
@@ -218,10 +145,6 @@ const CustomForm = () => {
 
 
                         <h2 className={styles.title}>Pick Your Plate!</h2>
-
-
-                        {/* {showSelect} */}
-                        {/* {show} */}
 
 
                         <div className={`${styles.form_selectGroup} input-group mb-3`}>
