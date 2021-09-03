@@ -2,6 +2,8 @@ import { db } from '../../utils/firebase'
 import firebase from "firebase/app";
 import styles from '../../styles/FormSuccess.module.css'
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
+import cashAppQR from '../../Assets/cashAppQR.jpg'
 
 
 const FormSuccess = () => {
@@ -71,6 +73,15 @@ const FormSuccess = () => {
                     <div>
                         Cash or Cashapp accepted!
                     </div>
+
+
+
+                    <div className={styles.success_qrcode_container}>
+                        <a  href="https://cash.app/$DRT1992?qr=1" target="_blank" rel="noopener noreferrer" >
+                            <Image src={cashAppQR} className={`${styles.success_qrcode_img} `} alt="Intro Banner" />
+                        </a>
+                    </div>
+
                 </div>
             </div>
         </div>
