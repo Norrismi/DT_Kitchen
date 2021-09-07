@@ -5,11 +5,20 @@ import FormSuccess from './FormSuccess';
 import { useForm } from "react-hook-form";
 import { useState, useEffect } from 'react'
 import emailjs from 'emailjs-com'
+import SinglePlate from './SinglePlate';
 
+const MultiStepForm = () => {
 
-const CustomForm = () => {
+    const { register, getValues, handleSubmit, formState: { errors, isSubmitSuccessful, isValid } } = useForm({ mode: 'all' });
 
-    const { register, handleSubmit, formState: { errors, isSubmitSuccessful, isValid } } = useForm({mode: 'all'});
+    const [formStep, setFormStep] = useState(0)
+    // const [plates, setPlates] = useState()
+
+    const totalPlates = getValues("plates_number")
+
+    const nextForm = (formStep) => {
+        setFormStep(current => current + 1)
+    }
 
     const [proteinItem, setProteinItem] = useState();
     const [dessertItem, setDessertItem] = useState();
@@ -18,9 +27,6 @@ const CustomForm = () => {
     const [sideItem, setSideItem] = useState();
     const [drinkItem, setDrinkItem] = useState();
 
-
-
-    const arrTotalPrice = []
 
     const firestore = firebase.firestore().collection('custom')
 
@@ -49,72 +55,21 @@ const CustomForm = () => {
 
 
 
-
-    if (isSubmitSuccessful) return <FormSuccess />
-
-    // const foodCategory = ['food__protein', 'food__green', 'food__starch', 'food__side', 'food__dessert', 'food__drink',]
-
-    const onSubmit = (data, e) => {
-
-        const { email, name, phone, ...newData } = data
-
-        for (const prop in newData) {
-            (newData[prop] != 'Choose...')
-                ? arrTotalPrice.push(Number(newData[prop].split('$').pop()))
-                : arrTotalPrice.push(0);
-        }
-
-        const total = arrTotalPrice.reduce((arr, ac) => arr + ac).toFixed(2)
-
-        db.collection('New Order').add({
-            ...data,
-            totalPrice: total,
-            messageSent: firebase.firestore.FieldValue.serverTimestamp()
-
-        })
-
-
-
-        const { food__dessert, food__protein, food__starch } = data
-
-
-        let newProtein = newData.food__protein
-        let newStarch = newData.food__starch
-        let newDessert = newData.food__dessert
-
-
-        const YOUR_SERVICE_ID = process.env.NEXT_PUBLIC_EmailJS_YOUR_SERVICE_ID;
-        const YOUR_TEMPLATE_ID = process.env.NEXT_PUBLIC_EmailJS_YOUR_TEMPLATE_ID;
-        const YOUR_USER_ID = process.env.NEXT_PUBLIC_EmailJS_YOUR_USER_ID;
-
-        let templateParams = {
-            name,
-            email,
-            phone,
-            newProtein,
-            newStarch,
-            newDessert
-        }
-
-        // emailjs.send(YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, templateParams, YOUR_USER_ID)
-        //     .then((result) => {
-        //         console.log(result.text);
-        //     }, (error) => {
-        //         console.log(error.text);
-        //     });
-    }
-
-
-
-
     return (
-        <>
-
-            <form onSubmit={handleSubmit((onSubmit))}>
-
+        <div>
+            {formStep == 0 && <section>
                 <div className={`${styles.form_card} card form_card `}>
                     <div className={`${styles.form_card_body} card-body`}>
                         <h2 className={styles.title}>Order Info</h2>
+
+                        <div className={`${styles.form_selectGroup, styles.form_input} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <span className="input-group-text" >Plate #</span>
+                            </div>
+                            <input type="number" min="2" max="10" className={`form-control`} {...register("plates_number", { required: true })} placeholder="Number of Plates" aria-label="Order Name" aria-describedby="basic-addon" />
+                        </div>
+
+
 
                         <div className={`${styles.form_selectGroup, styles.form_input} input-group mb-3`}>
                             <div className="input-group-prepend">
@@ -148,6 +103,30 @@ const CustomForm = () => {
                         </div>
 
 
+                        <div className={styles.form_submitButton_container}>
+
+                            <button className={` btn btn-dark contact-form_button`} disabled={!isValid} onClick={nextForm}>Submit My Order</button>
+
+                            {console.log(formStep)}
+                        </div>
+                    </div>
+                </div>
+            </section>}
+
+            {formStep == 1 && <section>
+
+
+
+
+                <SinglePlate totalPlates={totalPlates} formStep={formStep} nextForm={nextForm} />
+
+
+
+
+                {/* <div className={`${styles.form_card} card form_card `}>
+                    <div className={`${styles.form_card_body} card-body`}>
+
+          
                         <h2 className={styles.title}>Pick Your Plate!</h2>
 
 
@@ -231,18 +210,12 @@ const CustomForm = () => {
                             </select>
                         </div>
 
-
-
-                        <div className={styles.form_submitButton_container}>
-
-                            <button className={` btn btn-dark contact-form_button`} disabled={!isValid} type="submit">Submit My Order</button>
-                        </div>
                     </div>
-                </div>
-            </form>
+                </div> */}
+            </section>}
 
-        </>
+        </div>
     );
 }
 
-export default CustomForm;
+export default MultiStepForm;

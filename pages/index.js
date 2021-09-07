@@ -2,6 +2,7 @@ import firebase from "firebase/app";
 import CarouselPics from '../components/CarouselPics';
 import OrderForm from '../components/Form/OrderForm';
 import CustomForm from '../components/Form/CustomForm';
+import MultiStepForm from "../components/Form/MultiStepForm";
 import dt_kitchen_spice from '../Assets/dt_kitchen_spice.png'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
@@ -44,8 +45,10 @@ export default function Home() {
         <Image src={dt_kitchen_spice} className={`${styles.home_banner} `} alt="Intro Banner" />
       </div>
 
-      {(customForm == true)? <CustomForm /> :  <OrderForm />}
+      {/* <CustomForm /> */}
 
+      {/* {(customForm == true)? <CustomForm /> :  <OrderForm />} */}
+      <MultiStepForm />
 
       <CarouselPics />
 

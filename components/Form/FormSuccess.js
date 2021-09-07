@@ -12,10 +12,14 @@ const FormSuccess = () => {
     const [totalPrice, setTotalPrice] = useState()
 
     const [protein, setProtein] = useState()
-    const [dessert, setDessert] = useState()
+    const [green, setGreen] = useState()
     const [starch, setStarch] = useState()
+    const [side, setSide] = useState()
+    const [dessert, setDessert] = useState()
+    const [drink, setDrink] = useState()
 
-    ////////////////////////////////////////////// arr of (diff states) 
+    let menuItems = [protein, green, starch, side, dessert, drink]
+
 
     let firestore = firebase.firestore()
 
@@ -31,12 +35,23 @@ const FormSuccess = () => {
 
         db.collection("New Order")
             .orderBy('messageSent', 'desc').limit(1)
-            .onSnapshot(item => setDessert(item.docs.map(a => a.data().food__dessert)))
+            .onSnapshot(item => setGreen(item.docs.map(a => a.data().food__green)))
 
         db.collection("New Order")
             .orderBy('messageSent', 'desc').limit(1)
             .onSnapshot(item => setStarch(item.docs.map(a => a.data().food__starch)))
 
+        db.collection("New Order")
+            .orderBy('messageSent', 'desc').limit(1)
+            .onSnapshot(item => setSide(item.docs.map(a => a.data().food__side)))
+
+        db.collection("New Order")
+            .orderBy('messageSent', 'desc').limit(1)
+            .onSnapshot(item => setDrink(item.docs.map(a => a.data().food__drink)))
+
+        db.collection("New Order")
+            .orderBy('messageSent', 'desc').limit(1)
+            .onSnapshot(item => setDessert(item.docs.map(a => a.data().food__dessert)))
     }, []);
 
 
@@ -50,20 +65,11 @@ const FormSuccess = () => {
                 <div className={styles.success_header}>
                     Your order was successfully submitted!
                 </div>
-                {/* <p>Your order was...</p> */}
+         
                 <div className={styles.ordered_items}>
 
-                    {(protein && protein != 'Choose...')
-                        ? <li> {protein}</li>
-                        : null}
+                    {menuItems.map(item => (item != 'Choose...') ? <li key={item}> {item}</li> : null)}
 
-                    {(dessert && dessert != 'Choose...')
-                        ? <li> {dessert}</li>
-                        : null}
-
-                    {(starch && starch != 'Choose...')
-                        ? <li> {starch}</li>
-                        : null}
                 </div>
 
                 <div className={styles.order_total}>
@@ -77,7 +83,7 @@ const FormSuccess = () => {
 
 
                     <div className={styles.success_qrcode_container}>
-                        <a  href="https://cash.app/$DRT1992?qr=1" target="_blank" rel="noopener noreferrer" >
+                        <a href="https://cash.app/$DRT1992?qr=1" target="_blank" rel="noopener noreferrer" >
                             <Image src={cashAppQR} className={`${styles.success_qrcode_img} `} alt="Intro Banner" />
                         </a>
                     </div>
