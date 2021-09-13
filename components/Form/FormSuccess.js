@@ -68,6 +68,7 @@ const FormSuccess = () => {
          
                 <div className={styles.ordered_items}>
 
+                    {/* change keys ////////////////// */}
                     {menuItems.map(item => (item != 'Choose...') ? <li key={item}> {item}</li> : null)}
 
                 </div>

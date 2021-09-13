@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { useState, useEffect } from 'react'
 
 
-const SinglePlate = ({ formStep, totalPlates, nextForm }) => {
+const SinglePlate = ({ formStep, totalPlates, nextForm, button }) => {
 
 
 
@@ -43,6 +43,8 @@ const SinglePlate = ({ formStep, totalPlates, nextForm }) => {
     const sides = sideItem && sideItem.map(item => <option key={item}>{item} </option>)
     const desserts = dessertItem && dessertItem.map(item => <option key={item}>{item} </option>)
     const drinks = drinkItem && drinkItem.map(item => <option key={item}>{item} </option>)
+
+
 
 
 
@@ -138,12 +140,16 @@ const SinglePlate = ({ formStep, totalPlates, nextForm }) => {
 
                     </select>
 
-                    <div className={styles.form_submitButton_container}>
+                {button}
 
-                        <button className={` btn btn-dark contact-form_button`} onClick={nextForm}>Submit My Order</button>
 
-                        {console.log(formStep)}
-                    </div>
+
+                    {/* <div className={styles.form_submitButton_container}>
+
+                         <button className={` btn btn-dark contact-form_button`} onClick={nextForm}>Next</button>
+
+                         {console.log(formStep)}
+                     </div> */}
                 </div>
 
             </div>
