@@ -14,6 +14,9 @@ if (!firebase.apps.length) {
     firebase.initializeApp(config)
 }
 
-const db = firebase.firestore()
+const db = firebase.firestore()//.settings({ ignoreUndefinedProperties: true, merge: true })
+
+// const firestore = admin.firestore();
+// firestore.settings({ ignoreUndefinedProperties: true });
 
 export { db };

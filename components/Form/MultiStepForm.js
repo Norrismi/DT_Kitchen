@@ -63,11 +63,28 @@ const MultiStepForm = () => {
 
     const onSubmit = (data, e) => {
 
-        const { email, name, phone, ...newData } = data
+        // const { email, name, phone, ...newData } = data
+
+
+        //Object.keys(data).forEach(key => data[key] === undefined && delete data[key])
 
         console.log(data)
-        // console.log(newData)
-        // console.log(arrTotalPrice)
+        
+        // db.collection('New Order').add({
+        //     data,
+        //     messageSent: firebase.firestore.FieldValue.serverTimestamp(),
+            
+        // })
+
+        firebase.firestore().collection("New Order").add({
+            data,
+            messageSent: firebase.firestore.FieldValue.serverTimestamp()
+        })
+        
+
+    }
+        
+
 
         // for (const prop in newData) {
         //     (newData[prop] != 'Choose...')
@@ -88,12 +105,8 @@ const MultiStepForm = () => {
 
         // const total = arrTotalPrice.reduce((arr, ac) => arr + ac).toFixed(2)
 
-        db.collection('New Order').add({
-            data,
-            messageSent: firebase.firestore.FieldValue.serverTimestamp(),
-            //totalPrice: total,
+       
 
-        })
 
 
 
@@ -124,7 +137,7 @@ const MultiStepForm = () => {
         //     }, (error) => {
         //         console.log(error.text);
         //     });
-    }
+    
 
     const showNext = (
         <div className={styles.form_submitButton_container}>
@@ -132,22 +145,24 @@ const MultiStepForm = () => {
         </div>
     )
 
-    const submit = (
+    const submitted= (
         <div className={styles.form_submitButton_container}>
-            <button className={` btn btn-dark contact-form_button`} onClick={onSubmit}>Submit My Order</button>
+            <button className={` btn btn-dark contact-form_button`} onClick={() => onSubmit}>Submit My Order</button>
         </div>
     )
 
-    const button = (formStep < totalPlates) ? showNext : submit
+    const button = (formStep < totalPlates) ? showNext : submitted
 
 
-
+//firebase doesn't work with onSubmit *********************************************
 
     return (
-        <form onSubmit={handleSubmit((onSubmit))}>
-    
-
-
+        
+        
+        
+        <form 
+         onSubmit={handleSubmit((onSubmit))}
+        >
             {formStep == 0 && <section>
                 <div className={`${styles.form_card} card form_card `}>
                     <div className={`${styles.form_card_body} card-body`}>
@@ -157,7 +172,7 @@ const MultiStepForm = () => {
                             <div className="input-group-prepend">
                                 <span className="input-group-text" >Plate #</span>
                             </div>
-                            <input type="number" min="2" max="10" className={`form-control`} {...register("plates_number", { required: true })} placeholder="Number of Plates" aria-label="Order Name" aria-describedby="basic-addon" />
+                            <input type="number" min="1" max="10" className={`form-control`} {...register("plates_number", { required: true })} placeholder="Number of Plates" aria-label="Order Name" aria-describedby="basic-addon" />
                         </div>
 
 
@@ -195,10 +210,11 @@ const MultiStepForm = () => {
 
 
                         {showNext}
+                 
 
                     </div>
                 </div>
-                {/* <StepOneForm showNext={showNext}/> */}
+             
             </section>}
 
             {formStep == 1 && <section>
@@ -207,40 +223,10 @@ const MultiStepForm = () => {
 
                 <div className={`${styles.form_card} card form_card `}>
                     <div className={`${styles.form_card_body} card-body`}>
-                        <h2 className={styles.title}>Order Info</h2>
-
-                        <div className={`${styles.form_selectGroup, styles.form_input} input-group mb-3`}>
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" >Name</span>
-                            </div>
-                            <input type="text" className={`form-control`} {...register("name", { required: true })} placeholder="Order Name" aria-label="Order Name" aria-describedby="basic-addon" />
-                        </div>
-                        <div className={`${styles.form_messageContainer}`}>
-
-                            {errors.name && <div className={`${styles.form_message}`}>Order name is required</div>}
-                        </div>
-
-                        <div className={`${styles.form_selectGroup, styles.form_input} input-group mb-3`}>
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" >Email</span>
-                            </div>
-                            <input type="email" id="email" className={`form-control`} {...register("email")} placeholder="Email@provider.com" aria-label="Email" aria-describedby="basic-addon" />
-                        </div>
-
-                        <div className={`${styles.form_selectGroup, styles.form_input} input-group mb-3`}>
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" >Number</span>
-                            </div>
-                            <input type="tel" id="phone" className={`form-control`} {...register("phone", { required: true })} placeholder="111-111-1111" aria-label="Phone Number" aria-describedby="basic-addon" />
+                  
 
 
-                        </div>
-                        <div className={`${styles.form_messageContainer}`}>
-
-                            {errors.phone && <div className={`${styles.form_message}`}>Phone number is required</div>}
-                        </div>
-
-
+                        <div className=""> {`${formStep} of ${totalPlates} plates`} </div>
                         <h2 className={styles.title}>Pick Your Plate!</h2>
 
 
@@ -327,8 +313,6 @@ const MultiStepForm = () => {
 
 
                         <div className={styles.form_submitButton_container}>
-
-                            {/* <button className={` btn btn-dark contact-form_button`} disabled={!isValid} type="submit">Submit My Order</button> */}
                             {button}
                         </div>
                     </div>
@@ -346,8 +330,7 @@ const MultiStepForm = () => {
                     <div className={`${styles.form_card_body} card-body`}>
                       
 
-
-
+                    <div className=""> {`${formStep} of ${totalPlates} plates`} </div>
                         <h2 className={styles.title}>Pick Your Plate!</h2>
 
 
@@ -434,10 +417,9 @@ const MultiStepForm = () => {
 
 
                         <div className={styles.form_submitButton_container}>
-
-                            {/* <button className={` btn btn-dark contact-form_button`} disabled={!isValid} type="submit">Submit My Order</button> */}
+                  
                             {button}
-                    
+        
                         </div>
                     </div>
                 </div>
