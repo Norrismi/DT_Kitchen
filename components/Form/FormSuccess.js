@@ -66,19 +66,22 @@ const FormSuccess = () => {
                     Your order was successfully submitted!
                 </div>
          
-                <div className={styles.ordered_items}>
+                {/* <div className={styles.ordered_items}>
 
-                    {/* change keys ////////////////// */}
+               
                     {menuItems.map(item => (item != 'Choose...') ? <li key={item}> {item}</li> : null)}
 
-                </div>
+                </div> */}
 
                 <div className={styles.order_total}>
                     <div>
                         Your order total is {totalFormatted}
                     </div>
                     <div>
-                        Cash or Cashapp accepted!
+                        Cash or Cashapp accepted
+                    </div>
+                    <div>
+                        Tips are always appreciated
                     </div>
 
 
