@@ -59,7 +59,7 @@ const MultiStepForm = () => {
 
 
 
-    if (isSubmitSuccessful) return <FormSuccess />
+    // if (isSubmitSuccessful) return <FormSuccess />
 
     const onSubmit = (data, e) => {
 
@@ -71,8 +71,9 @@ const MultiStepForm = () => {
             ? arrTotalPrice.push(Number(newData[prop].split('$').pop()))
             : arrTotalPrice.push(0);
         
-              console.log(prop)
-              console.log(newData)
+             console.log(prop)
+            // console.log(data)
+             console.log(newData)
         }
         const total = arrTotalPrice.reduce((arr, ac) => arr + ac).toFixed(2)
 
@@ -86,15 +87,6 @@ const MultiStepForm = () => {
 
 
     }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -161,7 +153,7 @@ const MultiStepForm = () => {
                             <div className="input-group-prepend">
                                 <span className="input-group-text" >Plate #</span>
                             </div>
-                            <input type="number" min="1" max="10" className={`form-control`} {...register("plates_number", { required: true })} placeholder="Number of Plates" aria-label="Order Name" aria-describedby="basic-addon" />
+                            <input type="number" min="1" max="2" className={`form-control`} {...register("plates_number", { required: true })} placeholder="Number of Plates" aria-label="Order Name" aria-describedby="basic-addon" />
                         </div>
 
 
@@ -223,7 +215,7 @@ const MultiStepForm = () => {
                             <div className="input-group-prepend">
                                 <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Protein</label>
                             </div>
-                            <select {...register("food__protein")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                            <select {...register("1_food__protein")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
                                 <option className={styles.form_option} >Choose...</option>
 
                                 {proteins}
@@ -237,7 +229,7 @@ const MultiStepForm = () => {
                             <div className="input-group-prepend">
                                 <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Starch</label>
                             </div>
-                            <select {...register("food__starch")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                            <select {...register("1_food__starch")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
                                 <option className={styles.form_option} >Choose...</option>
 
                                 {starches}
@@ -248,22 +240,24 @@ const MultiStepForm = () => {
 
                         <div className={`${styles.form_selectGroup} input-group mb-3`}>
                             <div className="input-group-prepend">
-                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Greens</label>
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Side 1</label>
                             </div>
-                            <select {...register("food__green")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                            <select {...register("1_food__side_one")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
                                 <option className={styles.form_option} >Choose...</option>
 
-                                {greens}
+                                {sides}
 
 
                             </select>
                         </div>
 
+                      
+
                         <div className={`${styles.form_selectGroup} input-group mb-3`}>
                             <div className="input-group-prepend">
-                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Side</label>
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Side 2</label>
                             </div>
-                            <select {...register("food__side")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                            <select {...register("1_food__side_two")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
                                 <option className={styles.form_option} >Choose...</option>
 
                                 {sides}
@@ -277,7 +271,7 @@ const MultiStepForm = () => {
                             <div className="input-group-prepend">
                                 <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupDessert">Dessert</label>
                             </div>
-                            <select {...register("food__dessert")} className={`${styles.form_select} custom-select" id="inputGroupDessert`}>
+                            <select {...register("1_food__dessert")} className={`${styles.form_select} custom-select" id="inputGroupDessert`}>
                                 <option className={styles.form_option} >Choose...</option>
 
                                 {desserts}
@@ -290,7 +284,7 @@ const MultiStepForm = () => {
                             <div className="input-group-prepend">
                                 <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Drink</label>
                             </div>
-                            <select {...register("food__drink")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                            <select {...register("1_food__drink")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
                                 <option className={styles.form_option} >Choose...</option>
 
                                 {drinks}
@@ -301,7 +295,7 @@ const MultiStepForm = () => {
 
                         <div className="form-group">
                             <label className={`${styles.formTextAreaLabel} input-group-text`} htmlFor="customPlateMessage">Custom Plate</label>
-                            <textarea {...register("one_food__message")} className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <textarea {...register("one_food__message")} className="form-control" placeholder="Add notes here to modify this plate. Additional charges apply for modifications. " rows="3"></textarea>
                         </div>
 
                         <div className={styles.form_submitButton_container}>
@@ -330,7 +324,7 @@ const MultiStepForm = () => {
                             <div className="input-group-prepend">
                                 <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Protein</label>
                             </div>
-                            <select {...register("food__protein")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                            <select {...register("2_food__protein")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
                                 <option className={styles.form_option} >Choose...</option>
 
                                 {proteins}
@@ -344,7 +338,7 @@ const MultiStepForm = () => {
                             <div className="input-group-prepend">
                                 <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Starch</label>
                             </div>
-                            <select {...register("food__starch")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                            <select {...register("2_food__starch")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
                                 <option className={styles.form_option} >Choose...</option>
 
                                 {starches}
@@ -355,22 +349,24 @@ const MultiStepForm = () => {
 
                         <div className={`${styles.form_selectGroup} input-group mb-3`}>
                             <div className="input-group-prepend">
-                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Greens</label>
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Side 1</label>
                             </div>
-                            <select {...register("food__green")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                            <select {...register("2_food__side_one")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
                                 <option className={styles.form_option} >Choose...</option>
 
-                                {greens}
+                                {sides}
 
 
                             </select>
                         </div>
 
+              
+
                         <div className={`${styles.form_selectGroup} input-group mb-3`}>
                             <div className="input-group-prepend">
-                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Side</label>
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Side 2</label>
                             </div>
-                            <select {...register("food__side")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                            <select {...register("2_food__side_two")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
                                 <option className={styles.form_option} >Choose...</option>
 
                                 {sides}
@@ -384,7 +380,7 @@ const MultiStepForm = () => {
                             <div className="input-group-prepend">
                                 <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupDessert">Dessert</label>
                             </div>
-                            <select {...register("food__dessert")} className={`${styles.form_select} custom-select" id="inputGroupDessert`}>
+                            <select {...register("2_food__dessert")} className={`${styles.form_select} custom-select" id="inputGroupDessert`}>
                                 <option className={styles.form_option} >Choose...</option>
 
                                 {desserts}
@@ -397,7 +393,7 @@ const MultiStepForm = () => {
                             <div className="input-group-prepend">
                                 <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Drink</label>
                             </div>
-                            <select {...register("food__drink")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                            <select {...register("2_food__drink")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
                                 <option className={styles.form_option} >Choose...</option>
 
                                 {drinks}
@@ -408,7 +404,7 @@ const MultiStepForm = () => {
 
                         <div className="form-group">
                             <label className={`${styles.formTextAreaLabel} input-group-text`} htmlFor="customPlateMessage">Custom Plate</label>
-                            <textarea {...register("two_food__message")} className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <textarea {...register("two_food__message")} className="form-control" placeholder="Add notes here to modify this plate. Additional charges apply for modifications "  rows="3"></textarea>
                         </div>
 
 

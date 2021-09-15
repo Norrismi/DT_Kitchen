@@ -80,9 +80,6 @@ const FormSuccess = () => {
                     <div>
                         Cash or Cashapp accepted
                     </div>
-                    <div>
-                        Tips are always appreciated
-                    </div>
 
 
 
@@ -90,6 +87,9 @@ const FormSuccess = () => {
                         <a href="https://cash.app/$DRT1992?qr=1" target="_blank" rel="noopener noreferrer" >
                             <Image src={cashAppQR} className={`${styles.success_qrcode_img} `} alt="Intro Banner" />
                         </a>
+                    </div>
+                    <div>
+                        Tips are always appreciated
                     </div>
 
                 </div>
