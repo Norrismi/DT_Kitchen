@@ -59,7 +59,7 @@ const MultiStepForm = () => {
 
 
 
-    // if (isSubmitSuccessful) return <FormSuccess />
+    if (isSubmitSuccessful) return <FormSuccess />
 
     const onSubmit = (data, e) => {
 
