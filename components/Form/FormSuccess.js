@@ -6,57 +6,47 @@ import Image from 'next/image'
 import cashAppQR from '../../Assets/cashAppQR.jpg'
 
 
-const FormSuccess = () => {
+const FormSuccess = ({ formData, sendTotal }) => {
 
 
-    const [totalPrice, setTotalPrice] = useState()
+    // const [totalPrice, setTotalPrice] = useState()
+    // const totalFormatted = (totalPrice && totalPrice.toString().includes('.')) ? `$${totalPrice}` : `$${totalPrice}.00`
 
-    const [protein, setProtein] = useState()
-    const [green, setGreen] = useState()
-    const [starch, setStarch] = useState()
-    const [side, setSide] = useState()
-    const [dessert, setDessert] = useState()
-    const [drink, setDrink] = useState()
-
-    let menuItems = [protein, green, starch, side, dessert, drink]
+    const plateOneItems = []
+    const plateTwoItems = []
 
 
-    let firestore = firebase.firestore()
+    const { email, name, phone, ...checkOutData } = formData
 
-    useEffect(() => {
+    const { plates_number, two_food__message, one_food__message, plate2_protein, plate2_starch, plate2_side_one, plate2_side_two, plate2_drink, plate2_dessert, ...plateOne } = checkOutData
 
-        db.collection("New Order")
-            .orderBy('messageSent', 'desc').limit(1)
-            .onSnapshot(item => setTotalPrice(item.docs.map(a => a.data().totalPrice)))
-
-        db.collection("New Order")
-            .orderBy('messageSent', 'desc').limit(1)
-            .onSnapshot(item => setProtein(item.docs.map(a => a.data().food__protein)))
-
-        db.collection("New Order")
-            .orderBy('messageSent', 'desc').limit(1)
-            .onSnapshot(item => setGreen(item.docs.map(a => a.data().food__green)))
-
-        db.collection("New Order")
-            .orderBy('messageSent', 'desc').limit(1)
-            .onSnapshot(item => setStarch(item.docs.map(a => a.data().food__starch)))
-
-        db.collection("New Order")
-            .orderBy('messageSent', 'desc').limit(1)
-            .onSnapshot(item => setSide(item.docs.map(a => a.data().food__side)))
-
-        db.collection("New Order")
-            .orderBy('messageSent', 'desc').limit(1)
-            .onSnapshot(item => setDrink(item.docs.map(a => a.data().food__drink)))
-
-        db.collection("New Order")
-            .orderBy('messageSent', 'desc').limit(1)
-            .onSnapshot(item => setDessert(item.docs.map(a => a.data().food__dessert)))
-    }, []);
+    let plateTwo = { plate2_protein, plate2_starch, plate2_side_one, plate2_side_two, plate2_drink, plate2_dessert, }
 
 
 
-    const totalFormatted = (totalPrice && totalPrice.toString().includes('.')) ? `$${totalPrice}` : `$${totalPrice}.00`
+
+    for (const prop in plateOne) {
+        (plateOne[prop] != 'Choose...')
+            ? plateOneItems.push(plateOne[prop])
+            : null;
+    }
+
+    for (const prop in plateTwo) {
+        (plateTwo[prop] != 'Choose...')
+            ? plateTwoItems.push(plateTwo[prop])
+            : null;
+    }
+
+
+
+
+    // console.log(formData)
+      console.log(plateTwoItems)
+  
+
+    // console.log(totalFormatted)
+    // console.log(totalPrice)
+
 
     return (
         <div className={`${styles.success} card`}>
@@ -65,17 +55,43 @@ const FormSuccess = () => {
                 <div className={styles.success_header}>
                     Your order was successfully submitted!
                 </div>
-         
-                {/* <div className={styles.ordered_items}>
 
-               
-                    {menuItems.map(item => (item != 'Choose...') ? <li key={item}> {item}</li> : null)}
 
-                </div> */}
+
+                {/* {(plateOneItems.length || one_food__message.length)
+                    ? (<div className={styles.ordered_items}>
+                        <h4>Plate One</h4>
+
+                        {plateOneItems.map((item, i) => <div key={i}> {item}</div>)}
+
+                        {(one_food__message.length) ? `Message: ${one_food__message}` : null}
+
+                    </div>)
+                    : null
+                }
+
+
+                {(plateTwoItems.length || two_food__message)
+                    ? (<div className={styles.ordered_items}>
+                        <h4>Plate two</h4>
+
+                        {plateTwoItems.map((item, i) => <div key={i}> {item}</div>)}
+
+                        {(two_food__message) ? `Message: ${two_food__message}` : null}
+
+                    </div>)
+                    :   <h4>Plate two empty</h4>} */}
+
+
+
+
+
+
 
                 <div className={styles.order_total}>
                     <div>
-                        Your order total is {totalFormatted}
+
+                        Your order total is  ${sendTotal}
                     </div>
                     <div>
                         Cash or Cashapp accepted
@@ -99,3 +115,4 @@ const FormSuccess = () => {
 }
 
 export default FormSuccess;
+
