@@ -62,25 +62,25 @@ const MultiStepForm = () => {
 
 
 
-    if (isSubmitSuccessful) return <FormSuccess formData={formData} sendTotal={sendTotal}  />
-    
+    if (isSubmitSuccessful) return <FormSuccess formData={formData} sendTotal={sendTotal} />
+
     // let newData
-    
+
     const onSubmit = (data, e) => {
-        
-        
-        const { email, name, phone, plates_number, one_food__message, two_food__message,   ...newData } = data
-        
+
+
+        const { email, name, phone, plates_number, one_food__message, two_food__message, ...newData } = data
+
         setFormData(data)
 
         for (const prop in newData) {
-            (newData[prop] != 'Choose...'  )
-            ? arrTotalPrice.push(Number(newData[prop].split('$').pop()))
-            : arrTotalPrice.push(0);
-        
+            (newData[prop] != 'Choose...')
+                ? arrTotalPrice.push(Number(newData[prop].split('$').pop()))
+                : arrTotalPrice.push(0);
+
             // console.log(prop)
-            // console.log(data)
-             //console.log(newData)
+            console.log('data:', data)
+            console.log('newData:', newData)
         }
         const total = arrTotalPrice.reduce((arr, ac) => arr + ac).toFixed(2)
         setSendTotal(total)
@@ -93,6 +93,73 @@ const MultiStepForm = () => {
         })
 
 
+
+
+
+        // const { food__dessert, food__protein, food__starch } = data
+
+
+        // let msgProtein = newData.plate1_protein
+        // let msgStarch = newData.food__starch
+        // let msgDessert = newData.food__dessert
+
+
+        const p1_Protein = newData.plate1_protein
+        const p1_Starch = newData.plate1_starch
+        const p1_SideOne = newData.plate1_side_one
+        const p1_SideTwo = newData.plate1_side_two
+        const p1_Drink = newData.plate1_drink
+        const p1_Dessert = newData.plate1_dessert
+        const p1_Comment = data.one_food__message
+
+        const p2_Protein = newData.plate2_protein
+        const p2_Starch = newData.plate2_starch
+        const p2_SideOne = newData.plate2_side_one
+        const p2_SideTwo = newData.plate2_side_two
+        const p2_Drink = newData.plate2_drink
+        const p2_Dessert = newData.plate2_dessert
+        const p2_Comment = data.two_food__message
+
+
+        const YOUR_SERVICE_ID = process.env.NEXT_PUBLIC_EmailJS_YOUR_SERVICE_ID;
+        const YOUR_TEMPLATE_ID = process.env.NEXT_PUBLIC_EmailJS_YOUR_TEMPLATE_ID;
+        const YOUR_USER_ID = process.env.NEXT_PUBLIC_EmailJS_YOUR_USER_ID;
+
+        // test multiple foods in form 1 
+        // make variables for messages and test both
+        // does form two work? 
+
+        let templateParams = {
+            name,
+            email,
+            phone,
+
+            p1_Protein,
+            p1_Starch,
+            p1_SideOne,
+            p1_SideTwo,
+            p1_Drink,
+            p1_Dessert,
+            p1_Comment,
+
+            p2_Protein,
+            p2_Starch,
+            p2_SideOne,
+            p2_SideTwo,
+            p2_Drink,
+            p2_Dessert,
+            p2_Comment,
+
+
+
+        }
+
+        // emailjs.send(YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, templateParams, YOUR_USER_ID)
+        //     .then((result) => {
+        //         console.log(result.text);
+        //     }, (error) => {
+        //         console.log(error.text);
+        //     });
     }
 
 
@@ -100,36 +167,6 @@ const MultiStepForm = () => {
 
 
 
-
-
-
-    // const { food__dessert, food__protein, food__starch } = data
-
-
-    // let newProtein = newData.food__protein
-    // let newStarch = newData.food__starch
-    // let newDessert = newData.food__dessert
-
-
-    // const YOUR_SERVICE_ID = process.env.NEXT_PUBLIC_EmailJS_YOUR_SERVICE_ID;
-    // const YOUR_TEMPLATE_ID = process.env.NEXT_PUBLIC_EmailJS_YOUR_TEMPLATE_ID;
-    // const YOUR_USER_ID = process.env.NEXT_PUBLIC_EmailJS_YOUR_USER_ID;
-
-    // let templateParams = {
-    //     name,
-    //     email,
-    //     phone,
-    //     newProtein,
-    //     newStarch,
-    //     newDessert
-    // }
-
-    // emailjs.send(YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, templateParams, YOUR_USER_ID)
-    //     .then((result) => {
-    //         console.log(result.text);
-    //     }, (error) => {
-    //         console.log(error.text);
-    //     });
 
 
     const showNext = (
@@ -147,7 +184,6 @@ const MultiStepForm = () => {
     const button = (formStep < totalPlates) ? showNext : submitted
 
 
-    //firebase doesn't work with onSubmit *********************************************
 
     return (
 
@@ -263,7 +299,7 @@ const MultiStepForm = () => {
                             </select>
                         </div>
 
-                      
+
 
                         <div className={`${styles.form_selectGroup} input-group mb-3`}>
                             <div className="input-group-prepend">
@@ -372,7 +408,7 @@ const MultiStepForm = () => {
                             </select>
                         </div>
 
-              
+
 
                         <div className={`${styles.form_selectGroup} input-group mb-3`}>
                             <div className="input-group-prepend">
@@ -416,7 +452,7 @@ const MultiStepForm = () => {
 
                         <div className="form-group">
                             <label className={`${styles.formTextAreaLabel} input-group-text`} htmlFor="customPlateMessage">Custom Plate</label>
-                            <textarea {...register("two_food__message")} className="form-control" placeholder="Add notes here to modify this plate. Additional charges apply for modifications "  rows="3"></textarea>
+                            <textarea {...register("two_food__message")} className="form-control" placeholder="Add notes here to modify this plate. Additional charges apply for modifications " rows="3"></textarea>
                         </div>
 
 

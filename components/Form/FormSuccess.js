@@ -41,7 +41,7 @@ const FormSuccess = ({ formData, sendTotal }) => {
 
 
     // console.log(formData)
-      console.log(plateTwoItems)
+      //console.log(plateTwoItems)
   
 
     // console.log(totalFormatted)
