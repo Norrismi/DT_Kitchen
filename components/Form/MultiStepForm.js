@@ -64,12 +64,25 @@ const MultiStepForm = () => {
 
     if (isSubmitSuccessful) return <FormSuccess formData={formData} sendTotal={sendTotal} />
 
-    // let newData
-
     const onSubmit = (data, e) => {
 
 
-        const { email, name, phone, plates_number, one_food__message, two_food__message, ...newData } = data
+        const { email,
+            name,
+            phone,
+            plates_number,
+            one_food__message,
+            two_food__message,
+            three_food__message,
+            four_food__message,
+            five_food__message,
+            six_food__message,
+            seven_food__message,
+            eight_food__message,
+            nine_food__message,
+            ten_food__message,
+            ...newData
+        } = data
 
         setFormData(data)
 
@@ -79,8 +92,8 @@ const MultiStepForm = () => {
                 : arrTotalPrice.push(0);
 
             // console.log(prop)
-            console.log('data:', data)
-            console.log('newData:', newData)
+           // console.log('data:', data)
+            //console.log('newData:', newData)
         }
         const total = arrTotalPrice.reduce((arr, ac) => arr + ac).toFixed(2)
         setSendTotal(total)
@@ -120,14 +133,78 @@ const MultiStepForm = () => {
         const p2_Dessert = newData.plate2_dessert
         const p2_Comment = data.two_food__message
 
+        const p3_Protein = newData.plate3_protein
+        const p3_Starch = newData.plate3_starch
+        const p3_SideOne = newData.plate3_side_one
+        const p3_SideTwo = newData.plate3_side_two
+        const p3_Drink = newData.plate3_drink
+        const p3_Dessert = newData.plate3_dessert
+        const p3_Comment = data.three_food__message
+
+        const p4_Protein = newData.plate4_protein
+        const p4_Starch = newData.plate4_starch
+        const p4_SideOne = newData.plate4_side_one
+        const p4_SideTwo = newData.plate4_side_two
+        const p4_Drink = newData.plate4_drink
+        const p4_Dessert = newData.plate4_dessert
+        const p4_Comment = data.four_food__message
+
+        const p5_Protein = newData.plate5_protein
+        const p5_Starch = newData.plate5_starch
+        const p5_SideOne = newData.plate5_side_one
+        const p5_SideTwo = newData.plate5_side_two
+        const p5_Drink = newData.plate5_drink
+        const p5_Dessert = newData.plate5_dessert
+        const p5_Comment = data.five_food__message
+
+        const p6_Protein = newData.plate6_protein
+        const p6_Starch = newData.plate6_starch
+        const p6_SideOne = newData.plate6_side_one
+        const p6_SideTwo = newData.plate6_side_two
+        const p6_Drink = newData.plate6_drink
+        const p6_Dessert = newData.plate6_dessert
+        const p6_Comment = data.six_food__message
+
+        const p7_Protein = newData.plate7_protein
+        const p7_Starch = newData.plate7_starch
+        const p7_SideOne = newData.plate7_side_one
+        const p7_SideTwo = newData.plate7_side_two
+        const p7_Drink = newData.plate7_drink
+        const p7_Dessert = newData.plate7_dessert
+        const p7_Comment = data.seven_food__message
+
+        const p8_Protein = newData.plate8_protein
+        const p8_Starch = newData.plate8_starch
+        const p8_SideOne = newData.plate8_side_one
+        const p8_SideTwo = newData.plate8_side_two
+        const p8_Drink = newData.plate8_drink
+        const p8_Dessert = newData.plate8_dessert
+        const p8_Comment = data.eight_food__message
+
+        const p9_Protein = newData.plate9_protein
+        const p9_Starch = newData.plate9_starch
+        const p9_SideOne = newData.plate9_side_one
+        const p9_SideTwo = newData.plate9_side_two
+        const p9_Drink = newData.plate9_drink
+        const p9_Dessert = newData.plate9_dessert
+        const p9_Comment = data.nine_food__message
+
+        const p10_Protein = newData.plate10_protein
+        const p10_Starch = newData.plate10_starch
+        const p10_SideOne = newData.plate10_side_one
+        const p10_SideTwo = newData.plate10_side_two
+        const p10_Drink = newData.plate10_drink
+        const p10_Dessert = newData.plate10_dessert
+        const p10_Comment = data.ten_food__message
+
+        
+        
+
 
         const YOUR_SERVICE_ID = process.env.NEXT_PUBLIC_EmailJS_YOUR_SERVICE_ID;
         const YOUR_TEMPLATE_ID = process.env.NEXT_PUBLIC_EmailJS_YOUR_TEMPLATE_ID;
         const YOUR_USER_ID = process.env.NEXT_PUBLIC_EmailJS_YOUR_USER_ID;
 
-        // test multiple foods in form 1 
-        // make variables for messages and test both
-        // does form two work? 
 
         let templateParams = {
             name,
@@ -149,6 +226,70 @@ const MultiStepForm = () => {
             p2_Drink,
             p2_Dessert,
             p2_Comment,
+
+            p3_Protein,
+            p3_Starch,
+            p3_SideOne,
+            p3_SideTwo,
+            p3_Drink,
+            p3_Dessert,
+            p3_Comment,
+
+            p4_Protein,
+            p4_Starch,
+            p4_SideOne,
+            p4_SideTwo,
+            p4_Drink,
+            p4_Dessert,
+            p4_Comment,
+
+            p5_Protein,
+            p5_Starch,
+            p5_SideOne,
+            p5_SideTwo,
+            p5_Drink,
+            p5_Dessert,
+            p5_Comment,
+
+            p6_Protein,
+            p6_Starch,
+            p6_SideOne,
+            p6_SideTwo,
+            p6_Drink,
+            p6_Dessert,
+            p6_Comment,
+
+            p7_Protein,
+            p7_Starch,
+            p7_SideOne,
+            p7_SideTwo,
+            p7_Drink,
+            p7_Dessert,
+            p7_Comment,
+
+            p8_Protein,
+            p8_Starch,
+            p8_SideOne,
+            p8_SideTwo,
+            p8_Drink,
+            p8_Dessert,
+            p8_Comment,
+
+            p9_Protein,
+            p9_Starch,
+            p9_SideOne,
+            p9_SideTwo,
+            p9_Drink,
+            p9_Dessert,
+            p9_Comment,
+
+            p10_Protein,
+            p10_Starch,
+            p10_SideOne,
+            p10_SideTwo,
+            p10_Drink,
+            p10_Dessert,
+            p10_Comment,
 
 
 
@@ -197,13 +338,31 @@ const MultiStepForm = () => {
                     <div className={`${styles.form_card_body} card-body`}>
                         <h2 className={styles.title}>Order Info</h2>
 
-                        <div className={`${styles.form_selectGroup, styles.form_input} input-group mb-3`}>
+                        {/* <div className={`${styles.form_selectGroup, styles.form_input} input-group mb-3`}>
                             <div className="input-group-prepend">
                                 <span className="input-group-text" >Plate #</span>
                             </div>
                             <input type="number" min="1" max="2" className={`form-control`} {...register("plates_number", { required: true })} placeholder="Number of Plates" aria-label="Order Name" aria-describedby="basic-addon" />
-                        </div>
+                        </div> */}
 
+                        <div className={`${styles.form_selectGroup, styles.form_input} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Plate #</label>
+                            </div>
+                            <select {...register("plates_number")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Number of Plates</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
 
 
                         <div className={`${styles.form_selectGroup, styles.form_input} input-group mb-3`}>
@@ -247,8 +406,6 @@ const MultiStepForm = () => {
             </section>}
 
             {formStep == 1 && <section>
-
-                {/* <SinglePlate totalPlates={totalPlates} formStep={formStep} nextForm={nextForm} button={button} /> */}
 
                 <div className={`${styles.form_card} card form_card `}>
                     <div className={`${styles.form_card_body} card-body`}>
@@ -358,8 +515,6 @@ const MultiStepForm = () => {
 
             {formStep == 2 && <section>
 
-                {/* <SinglePlate totalPlates={totalPlates} formStep={formStep} nextForm={nextForm} button={button} /> */}
-
                 <div className={`${styles.form_card} card form_card `}>
                     <div className={`${styles.form_card_body} card-body`}>
 
@@ -464,6 +619,870 @@ const MultiStepForm = () => {
                         </div>
                     </div>
                 </div>
+
+            </section>}
+
+            {formStep == 3 && <section>
+
+                <div className={`${styles.form_card} card form_card `}>
+                    <div className={`${styles.form_card_body} card-body`}>
+
+
+
+                        <div className=""> {`${formStep} of ${totalPlates} plates`} </div>
+                        <h2 className={styles.title}>Pick Your Plate!</h2>
+
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Protein</label>
+                            </div>
+                            <select {...register("plate3_protein")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {proteins}
+
+
+                            </select>
+                        </div>
+
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Starch</label>
+                            </div>
+                            <select {...register("plate3_starch")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {starches}
+
+
+                            </select>
+                        </div>
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Side 1</label>
+                            </div>
+                            <select {...register("plate3_side_one")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {sides}
+
+
+                            </select>
+                        </div>
+
+
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Side 2</label>
+                            </div>
+                            <select {...register("plate3_side_two")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {sides}
+
+
+                            </select>
+                        </div>
+
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupDessert">Dessert</label>
+                            </div>
+                            <select {...register("plate3_dessert")} className={`${styles.form_select} custom-select" id="inputGroupDessert`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {desserts}
+
+
+                            </select>
+                        </div>
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Drink</label>
+                            </div>
+                            <select {...register("plate3_drink")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {drinks}
+
+
+                            </select>
+                        </div>
+
+                        <div className="form-group">
+                            <label className={`${styles.formTextAreaLabel} input-group-text`} htmlFor="customPlateMessage">Custom Plate</label>
+                            <textarea {...register("three_food__message")} className="form-control" placeholder="Add notes here to modify this plate. Additional charges apply for modifications. " rows="3"></textarea>
+                        </div>
+
+                        <div className={styles.form_submitButton_container}>
+                            {button}
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </section>}
+
+            {formStep == 4 && <section>
+
+                <div className={`${styles.form_card} card form_card `}>
+                    <div className={`${styles.form_card_body} card-body`}>
+
+
+
+                        <div className=""> {`${formStep} of ${totalPlates} plates`} </div>
+                        <h2 className={styles.title}>Pick Your Plate!</h2>
+
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Protein</label>
+                            </div>
+                            <select {...register("plate4_protein")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {proteins}
+
+
+                            </select>
+                        </div>
+
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Starch</label>
+                            </div>
+                            <select {...register("plate4_starch")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {starches}
+
+
+                            </select>
+                        </div>
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Side 1</label>
+                            </div>
+                            <select {...register("plate4_side_one")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {sides}
+
+
+                            </select>
+                        </div>
+
+
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Side 2</label>
+                            </div>
+                            <select {...register("plate4_side_two")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {sides}
+
+
+                            </select>
+                        </div>
+
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupDessert">Dessert</label>
+                            </div>
+                            <select {...register("plate4_dessert")} className={`${styles.form_select} custom-select" id="inputGroupDessert`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {desserts}
+
+
+                            </select>
+                        </div>
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Drink</label>
+                            </div>
+                            <select {...register("plate4_drink")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {drinks}
+
+
+                            </select>
+                        </div>
+
+                        <div className="form-group">
+                            <label className={`${styles.formTextAreaLabel} input-group-text`} htmlFor="customPlateMessage">Custom Plate</label>
+                            <textarea {...register("four_food__message")} className="form-control" placeholder="Add notes here to modify this plate. Additional charges apply for modifications. " rows="3"></textarea>
+                        </div>
+
+                        <div className={styles.form_submitButton_container}>
+                            {button}
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </section>}
+
+            {formStep == 5 && <section>
+
+                <div className={`${styles.form_card} card form_card `}>
+                    <div className={`${styles.form_card_body} card-body`}>
+
+
+
+                        <div className=""> {`${formStep} of ${totalPlates} plates`} </div>
+                        <h2 className={styles.title}>Pick Your Plate!</h2>
+
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Protein</label>
+                            </div>
+                            <select {...register("plate5_protein")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {proteins}
+
+
+                            </select>
+                        </div>
+
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Starch</label>
+                            </div>
+                            <select {...register("plate5_starch")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {starches}
+
+
+                            </select>
+                        </div>
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Side 1</label>
+                            </div>
+                            <select {...register("plate5_side_one")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {sides}
+
+
+                            </select>
+                        </div>
+
+
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Side 2</label>
+                            </div>
+                            <select {...register("plate5_side_two")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {sides}
+
+
+                            </select>
+                        </div>
+
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupDessert">Dessert</label>
+                            </div>
+                            <select {...register("plate5_dessert")} className={`${styles.form_select} custom-select" id="inputGroupDessert`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {desserts}
+
+
+                            </select>
+                        </div>
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Drink</label>
+                            </div>
+                            <select {...register("plate5_drink")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {drinks}
+
+
+                            </select>
+                        </div>
+
+                        <div className="form-group">
+                            <label className={`${styles.formTextAreaLabel} input-group-text`} htmlFor="customPlateMessage">Custom Plate</label>
+                            <textarea {...register("five_food__message")} className="form-control" placeholder="Add notes here to modify this plate. Additional charges apply for modifications. " rows="3"></textarea>
+                        </div>
+
+                        <div className={styles.form_submitButton_container}>
+                            {button}
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </section>}
+
+            {formStep == 6 && <section>
+
+                <div className={`${styles.form_card} card form_card `}>
+                    <div className={`${styles.form_card_body} card-body`}>
+
+
+
+                        <div className=""> {`${formStep} of ${totalPlates} plates`} </div>
+                        <h2 className={styles.title}>Pick Your Plate!</h2>
+
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Protein</label>
+                            </div>
+                            <select {...register("plate6_protein")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {proteins}
+
+
+                            </select>
+                        </div>
+
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Starch</label>
+                            </div>
+                            <select {...register("plate6_starch")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {starches}
+
+
+                            </select>
+                        </div>
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Side 1</label>
+                            </div>
+                            <select {...register("plate6_side_one")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {sides}
+
+
+                            </select>
+                        </div>
+
+
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Side 2</label>
+                            </div>
+                            <select {...register("plate6_side_two")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {sides}
+
+
+                            </select>
+                        </div>
+
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupDessert">Dessert</label>
+                            </div>
+                            <select {...register("plate6_dessert")} className={`${styles.form_select} custom-select" id="inputGroupDessert`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {desserts}
+
+
+                            </select>
+                        </div>
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Drink</label>
+                            </div>
+                            <select {...register("plate6_drink")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {drinks}
+
+
+                            </select>
+                        </div>
+
+                        <div className="form-group">
+                            <label className={`${styles.formTextAreaLabel} input-group-text`} htmlFor="customPlateMessage">Custom Plate</label>
+                            <textarea {...register("six_food__message")} className="form-control" placeholder="Add notes here to modify this plate. Additional charges apply for modifications. " rows="3"></textarea>
+                        </div>
+
+                        <div className={styles.form_submitButton_container}>
+                            {button}
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </section>}
+
+            {formStep == 7 && <section>
+
+                <div className={`${styles.form_card} card form_card `}>
+                    <div className={`${styles.form_card_body} card-body`}>
+
+
+
+                        <div className=""> {`${formStep} of ${totalPlates} plates`} </div>
+                        <h2 className={styles.title}>Pick Your Plate!</h2>
+
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Protein</label>
+                            </div>
+                            <select {...register("plate7_protein")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {proteins}
+
+
+                            </select>
+                        </div>
+
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Starch</label>
+                            </div>
+                            <select {...register("plate7_starch")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {starches}
+
+
+                            </select>
+                        </div>
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Side 1</label>
+                            </div>
+                            <select {...register("plate7_side_one")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {sides}
+
+
+                            </select>
+                        </div>
+
+
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Side 2</label>
+                            </div>
+                            <select {...register("plate7_side_two")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {sides}
+
+
+                            </select>
+                        </div>
+
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupDessert">Dessert</label>
+                            </div>
+                            <select {...register("plate7_dessert")} className={`${styles.form_select} custom-select" id="inputGroupDessert`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {desserts}
+
+
+                            </select>
+                        </div>
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Drink</label>
+                            </div>
+                            <select {...register("plate7_drink")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {drinks}
+
+
+                            </select>
+                        </div>
+
+                        <div className="form-group">
+                            <label className={`${styles.formTextAreaLabel} input-group-text`} htmlFor="customPlateMessage">Custom Plate</label>
+                            <textarea {...register("seven_food__message")} className="form-control" placeholder="Add notes here to modify this plate. Additional charges apply for modifications. " rows="3"></textarea>
+                        </div>
+
+                        <div className={styles.form_submitButton_container}>
+                            {button}
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </section>}
+
+            {formStep == 8 && <section>
+
+                <div className={`${styles.form_card} card form_card `}>
+                    <div className={`${styles.form_card_body} card-body`}>
+
+
+
+                        <div className=""> {`${formStep} of ${totalPlates} plates`} </div>
+                        <h2 className={styles.title}>Pick Your Plate!</h2>
+
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Protein</label>
+                            </div>
+                            <select {...register("plate8_protein")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {proteins}
+
+
+                            </select>
+                        </div>
+
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Starch</label>
+                            </div>
+                            <select {...register("plate8_starch")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {starches}
+
+
+                            </select>
+                        </div>
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Side 1</label>
+                            </div>
+                            <select {...register("plate8_side_one")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {sides}
+
+
+                            </select>
+                        </div>
+
+
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Side 2</label>
+                            </div>
+                            <select {...register("plate8_side_two")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {sides}
+
+
+                            </select>
+                        </div>
+
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupDessert">Dessert</label>
+                            </div>
+                            <select {...register("plate8_dessert")} className={`${styles.form_select} custom-select" id="inputGroupDessert`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {desserts}
+
+
+                            </select>
+                        </div>
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Drink</label>
+                            </div>
+                            <select {...register("plate8_drink")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {drinks}
+
+
+                            </select>
+                        </div>
+
+                        <div className="form-group">
+                            <label className={`${styles.formTextAreaLabel} input-group-text`} htmlFor="customPlateMessage">Custom Plate</label>
+                            <textarea {...register("eight_food__message")} className="form-control" placeholder="Add notes here to modify this plate. Additional charges apply for modifications. " rows="3"></textarea>
+                        </div>
+
+                        <div className={styles.form_submitButton_container}>
+                            {button}
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </section>}
+
+            {formStep == 9 && <section>
+
+                <div className={`${styles.form_card} card form_card `}>
+                    <div className={`${styles.form_card_body} card-body`}>
+
+
+
+                        <div className=""> {`${formStep} of ${totalPlates} plates`} </div>
+                        <h2 className={styles.title}>Pick Your Plate!</h2>
+
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Protein</label>
+                            </div>
+                            <select {...register("plate9_protein")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {proteins}
+
+
+                            </select>
+                        </div>
+
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Starch</label>
+                            </div>
+                            <select {...register("plate9_starch")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {starches}
+
+
+                            </select>
+                        </div>
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Side 1</label>
+                            </div>
+                            <select {...register("plate9_side_one")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {sides}
+
+
+                            </select>
+                        </div>
+
+
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Side 2</label>
+                            </div>
+                            <select {...register("plate9_side_two")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {sides}
+
+
+                            </select>
+                        </div>
+
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupDessert">Dessert</label>
+                            </div>
+                            <select {...register("plate9_dessert")} className={`${styles.form_select} custom-select" id="inputGroupDessert`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {desserts}
+
+
+                            </select>
+                        </div>
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Drink</label>
+                            </div>
+                            <select {...register("plate9_drink")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {drinks}
+
+
+                            </select>
+                        </div>
+
+                        <div className="form-group">
+                            <label className={`${styles.formTextAreaLabel} input-group-text`} htmlFor="customPlateMessage">Custom Plate</label>
+                            <textarea {...register("nine_food__message")} className="form-control" placeholder="Add notes here to modify this plate. Additional charges apply for modifications. " rows="3"></textarea>
+                        </div>
+
+                        <div className={styles.form_submitButton_container}>
+                            {button}
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </section>}
+
+            {formStep == 10 && <section>
+
+                <div className={`${styles.form_card} card form_card `}>
+                    <div className={`${styles.form_card_body} card-body`}>
+
+
+
+                        <div className=""> {`${formStep} of ${totalPlates} plates`} </div>
+                        <h2 className={styles.title}>Pick Your Plate!</h2>
+
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Protein</label>
+                            </div>
+                            <select {...register("plate10_protein")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {proteins}
+
+
+                            </select>
+                        </div>
+
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Starch</label>
+                            </div>
+                            <select {...register("plate10_starch")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {starches}
+
+
+                            </select>
+                        </div>
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Side 1</label>
+                            </div>
+                            <select {...register("plate10_side_one")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {sides}
+
+
+                            </select>
+                        </div>
+
+
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Side 2</label>
+                            </div>
+                            <select {...register("plate10_side_two")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {sides}
+
+
+                            </select>
+                        </div>
+
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupDessert">Dessert</label>
+                            </div>
+                            <select {...register("plate10_dessert")} className={`${styles.form_select} custom-select" id="inputGroupDessert`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {desserts}
+
+
+                            </select>
+                        </div>
+
+                        <div className={`${styles.form_selectGroup} input-group mb-3`}>
+                            <div className="input-group-prepend">
+                                <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Drink</label>
+                            </div>
+                            <select {...register("plate10_drink")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                                <option className={styles.form_option} >Choose...</option>
+
+                                {drinks}
+
+
+                            </select>
+                        </div>
+
+                        <div className="form-group">
+                            <label className={`${styles.formTextAreaLabel} input-group-text`} htmlFor="customPlateMessage">Custom Plate</label>
+                            <textarea {...register("ten_food__message")} className="form-control" placeholder="Add notes here to modify this plate. Additional charges apply for modifications. " rows="3"></textarea>
+                        </div>
+
+                        <div className={styles.form_submitButton_container}>
+                            {button}
+                        </div>
+                    </div>
+                </div>
+
+
 
             </section>}
 
