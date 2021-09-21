@@ -2,6 +2,9 @@ import Image from 'next/image'
 import MultiStepForm from '../components/Form/MultiStepForm';
 import CarouselPics from '../components/CarouselPics';
 import styles from '../styles/Home.module.css'
+import dt_kitchen_spice from '../Assets/dt_kitchen_spice.png'
+
+
 
 const OrderForm = () => {
     return (

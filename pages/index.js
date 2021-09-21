@@ -25,10 +25,7 @@ export default function Home() {
         smokeSrc="https://s3-us-west-2.amazonaws.com/s.cdpn.io/95637/Smoke-Element.png"
         smokeOpacity="0.3"
       />
-      {/* <Image src={whitePlate} className={styles.home_centerContainerPlate} card` alt="Intro Banner">
-      
-      
-      </Image> */}
+  
 
 
 
