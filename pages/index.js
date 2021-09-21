@@ -21,27 +21,30 @@ export default function Home() {
         <Image src={dt_kitchen_spice} className={`${styles.home_banner} `} alt="Intro Banner" />
       </div>
       <SmokeElement
+        className={styles.home_smokeBackground}
         opacity="1"
         smokeSrc="https://s3-us-west-2.amazonaws.com/s.cdpn.io/95637/Smoke-Element.png"
-        smokeOpacity="0.3"
+        smokeOpacity="0.5"
       />
-  
 
 
 
-<div className={`${styles.home_centerContainer} card`}>
 
-      <h3 className={`${styles.home_text}`}>
-        Excuse the smoke
-        <div>
-          I have been cooking all day!
-        </div>
-        <Link href='/about' passHref>
-          <button className={`${styles.home_button} btn`}>TEST</button>
-        </Link>
 
-      </h3>
-</div>
+      <div className={`${styles.home_centerContainer} card`}>
+        <h3 className={`${styles.home_content}`}>
+          Excuse the smoke
+          <div>
+            I have been cooking all day!
+          </div>
+
+          <Link href="/orderForm" passHref>
+            <button className={`${styles.home_button} btn`}>Order your Plate Now!</button>
+          </Link>
+        </h3>
+
+
+      </div>
 
 
 
