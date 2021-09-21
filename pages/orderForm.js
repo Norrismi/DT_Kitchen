@@ -1,6 +1,6 @@
-// import Image from 'next/image'
-// import MultiStepForm from '../components/Form/MultiStepForm';
-// import CarouselPics from '../components/CarouselPics';
+import Image from 'next/image'
+import MultiStepForm from '../components/Form/MultiStepForm';
+import CarouselPics from '../components/CarouselPics';
 
 // const orderForm = () => {
 //     return (
@@ -18,4 +18,4 @@
 //     );
 // }
 
-// export default orderForm;
+export default orderForm;
