@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import MultiStepForm from '../components/Form/MultiStepForm';
 import CarouselPics from '../components/CarouselPics';
+import styles from '../styles/Home.module.css'
 
 const OrderForm = () => {
     return (
