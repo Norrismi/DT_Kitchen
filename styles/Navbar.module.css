@@ -1,19 +1,20 @@
 .nav_container {
     display: flex;
     justify-content: center;
-    background-color: black;
+    /* background-color: black; */
 }
 
 .nav_link {
     text-decoration: inherit;
     color: white;
     padding: 5px;
-    font-size: 30px;
+    font-size: 28px;
 
 }
 
 .nav_link:hover {
-    color: #8D0D06;
+    /* color: #8D0D06; */
+    color: lightgray;
 
 }
 
@@ -22,6 +23,7 @@
     .nav_container {
         display: flex;
         justify-content: space-evenly;
+        background-color: black;
     }
     .nav_link {
         font-size: 20px;
@@ -47,9 +49,40 @@
     }
 }
 
-@media (min-width: 1024px) {
+
+
+@media (min-width: 1025px) {
     .nav_link {
         font-size: 35px;
     
     }
+    .nav_container {
+        background-color: transparent;
+        position: absolute;
+        top: 4%;
+        right: -12%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+    }
 }
+
+@media (min-width: 1900px) {
+    .nav_link {
+        font-size: 35px;
+    
+    }
+    .nav_container {
+        background-color: transparent;
+        position: absolute;
+        top: 4%;
+        right: -7%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+    }
+}
+
+
+
+
+
+
