@@ -1,6 +1,7 @@
 .carousel_container {
    
     background-color: black;
+    
 }
 
 .carousel_picture {
@@ -10,3 +11,15 @@
     height: 400px;
 
 }
+
+
+@media (min-width: 300px) {
+  
+    .carousel_container {
+   
+       padding-top: 100px;
+        
+    }
+
+  
+  }

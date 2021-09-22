@@ -48,6 +48,26 @@ div.home_centerContainer{
 }
 
 
+@media (min-width: 300px) {
+  
+  div.home_centerContainer{
+    top: 55%;
+
+  }
+
+
+}
+
+@media (min-width: 1025px) {
+  
+  div.home_centerContainer{
+    top: 90%;
+
+  }
+
+}
+
+
 
 
 
