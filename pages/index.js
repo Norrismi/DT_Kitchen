@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react'
 import whitePlate from '../Assets/whitePlate.jpeg'
 import SmokeElement from "smoke-effect-react";
 import Link from 'next/link'
+import Footer from '../components/Footer'
 
 
 export default function Home() {
@@ -25,6 +26,7 @@ export default function Home() {
         opacity="1"
         smokeSrc="https://s3-us-west-2.amazonaws.com/s.cdpn.io/95637/Smoke-Element.png"
         smokeOpacity="0.5"
+        width="1000"
       />
 
 
@@ -35,7 +37,7 @@ export default function Home() {
         <h3 className={`${styles.home_content}`}>
           Excuse the smoke
           <div>
-            I have been cooking all day!
+            {'I\'ve been cooking all day!'}
           </div>
 
           <Link href="/orderForm" passHref>
@@ -49,6 +51,8 @@ export default function Home() {
 
 
       {/* <CarouselPics /> */}
+
+      <Footer className={styles.home_footer} />
 
     </div>
 

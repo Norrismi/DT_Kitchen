@@ -1,10 +1,19 @@
-.footer_container {
+/* .footer_container {
     display: flex;
     justify-content: center;
     flex-direction: column;
     background-color: black;
     margin-bottom: 30px;
-}
+} */
+
+.footer_container{
+    position: absolute;
+    bottom: -65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-bottom: 50px;
+   
+  }
 
 .icon_container{
     display: flex;
