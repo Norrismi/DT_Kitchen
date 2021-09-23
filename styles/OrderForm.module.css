@@ -1,5 +1,4 @@
-/* 
-.form_card {
+ .form_card {
     display: flex;
     justify-content: center;
     width: 40rem;
@@ -9,9 +8,9 @@
     margin-bottom: 50px;
     background-color: lightgray;
     
-  } */
+  } 
 
-  .form_card{
+  /* .form_card{
     position: absolute;
     top: 105%;
     left: 50%;
@@ -23,7 +22,36 @@
    
   
   
+  } */
+
+  .orderForm_bannerContainer{
+
+    background-color: black;
+  
   }
+
+  .orderForm_Container{
+
+    height: '1000px';
+    min-height : '100vh';
+    animation: myanimation 30s infinite;
+  }
+
+  @keyframes myanimation {
+    0%{background-color:black;}
+    33% {background-color: #8d0d06; }
+    66%{background-color:grey;}
+    100%{background-color:black;}
+
+  }
+
+  /* @keyframes myanimation {
+    0% {background-color: red;}
+    25%{background-color:yellow;}
+    50%{background-color:green;}
+    75%{background-color:brown;}
+    100% {background-color: red;}
+  } */
 
   
   .title {
@@ -100,14 +128,14 @@
 
 
   
-        position: absolute;
+        /* position: absolute;
         top: 77%;
         left: 50%;
         transform: translate(-50%, -50%);
         text-align: center;
         background-color: lightgray;
         height: auto;
-        margin-bottom: 50px;
+        margin-bottom: 50px; */
        
       
       
