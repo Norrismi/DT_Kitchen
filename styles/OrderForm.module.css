@@ -40,7 +40,7 @@
   @keyframes myanimation {
     0%{background-color:black;}
     33% {background-color: #8d0d06; }
-    66%{background-color:grey;}
+    66%{background-color:#8d0d06;}
     100%{background-color:black;}
 
   }
