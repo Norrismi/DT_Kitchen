@@ -18,14 +18,14 @@ const OrderForm = () => {
 
       <MultiStepForm />
 
-      <SmokeElement
+      {/* <SmokeElement
         className={styles.home_smokeBackground}
         opacity="1"
         smokeSrc="https://s3-us-west-2.amazonaws.com/s.cdpn.io/95637/Smoke-Element.png"
         smokeOpacity="0.5"
         width="1000"
        
-      />
+      /> */}
 
       <CarouselPics />
 
