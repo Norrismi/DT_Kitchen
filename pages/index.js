@@ -50,7 +50,7 @@ export default function Home() {
 
 
 
-      {/* <CarouselPics /> */}
+      <CarouselPics />
 
       <Footer className={styles.home_footer} />
 

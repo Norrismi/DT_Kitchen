@@ -3,7 +3,6 @@
     margin: 150px 0  150px 0;
     padding: 40px 0 60px 0;
     background-color: black;
-   
     width: 70%;
     margin-right: auto;
     margin-left: auto;
@@ -48,7 +47,6 @@
 @media (min-width: 280px) {
     .success {
         margin: 80px 0 75px 0;
-        
         margin-right: auto;
         margin-left: auto;
         padding: 10px;
@@ -76,7 +74,6 @@
         margin: 150px 0  150px 0;
         padding: 40px 0 60px 0;
         background-color: black;
-        border-color: rgb(83, 211, 83);
         width: 70%;
         margin-right: auto;
         margin-left: auto;
