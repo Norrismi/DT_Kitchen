@@ -1,11 +1,7 @@
-import firebase from "firebase/app";
 import CarouselPics from '../components/CarouselPics';
-import MultiStepForm from "../components/Form/MultiStepForm";
 import dt_kitchen_spice from '../Assets/dt_kitchen_spice.png'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import { useState, useEffect } from 'react'
-import whitePlate from '../Assets/whitePlate.jpeg'
 import SmokeElement from "smoke-effect-react";
 import Link from 'next/link'
 import Footer from '../components/Footer'

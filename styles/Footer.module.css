@@ -84,4 +84,24 @@
       }
   
   }
+
+  @media (min-width: 1100px) {
+  
+    .footer_container{
+        bottom: -50%;
+  
+      }
+  
+  }
+
+  @media (min-width: 1500px) {
+  
+    .footer_container{
+        bottom: -55%;
+  
+      }
+  
+  }
+
+
   

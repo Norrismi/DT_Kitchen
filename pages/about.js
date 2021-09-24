@@ -3,6 +3,7 @@ import Image from 'next/image'
 import rastaMenu from '../Assets/rastaMenu.JPG'
 import salmonMenu from '../Assets/salmonMenu.jpg'
 import brownMenu from '../Assets/brownMenu.jpeg'
+import Footer from '../components/Footer'
 
 import { faCarrot } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -74,18 +75,7 @@ const About = () => {
 
             </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
+            {/* <Footer/> */}
 
 
 

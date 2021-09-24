@@ -91,7 +91,7 @@ const FormSuccess = ({ formData, sendTotal }) => {
                 <div className={styles.order_total}>
                     <div>
 
-                        Your order total is  ${sendTotal}
+                        Your order total is ${sendTotal} 
                     </div>
                     <div>
                         Cash or Cashapp accepted
@@ -104,7 +104,7 @@ const FormSuccess = ({ formData, sendTotal }) => {
                             <Image src={cashAppQR} className={`${styles.success_qrcode_img} `} alt="Intro Banner" />
                         </a>
                     </div>
-                    <div>
+                    <div className={styles.success_tips}>
                         Tips are always appreciated
                     </div>
 

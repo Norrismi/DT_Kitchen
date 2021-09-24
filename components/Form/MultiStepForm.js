@@ -5,8 +5,8 @@ import FormSuccess from './FormSuccess';
 import { useForm } from "react-hook-form";
 import { useState, useEffect } from 'react'
 import emailjs from 'emailjs-com'
-import SinglePlate from './SinglePlate';
-import StepOneForm from './StepOneForm';
+
+
 
 const MultiStepForm = () => {
 
@@ -338,20 +338,13 @@ const MultiStepForm = () => {
                     <div className={`${styles.form_card_body} card-body`}>
                         <h2 className={styles.title}>Order Info</h2>
 
-                        {/* <div className={`${styles.form_selectGroup, styles.form_input} input-group mb-3`}>
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" >Plate #</span>
-                            </div>
-                            <input type="number" min="1" max="2" className={`form-control`} {...register("plates_number", { required: true })} placeholder="Number of Plates" aria-label="Order Name" aria-describedby="basic-addon" />
-                        </div> */}
-
-                        <div className={`${styles.form_selectGroup, styles.form_input} input-group mb-3`}>
+                        <div className={`${styles.form_selectGroup, styles.form_input} input-group mb-1`}>
                             <div className="input-group-prepend">
                                 <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Plate #</label>
                             </div>
-                            <select {...register("plates_number")} className={`${styles.form_select} custom-select" id="inputGroupProtein`}>
+                            <select {...register("plates_number")} className={`${styles.form_select } custom-select" id="plateSelect`}>
                                 <option className={styles.form_option} >Number of Plates</option>
-                                <option value="1">1</option>
+                                <option value="1" className={styles.select_ctrl} >1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
                                 <option value="4">4</option>
@@ -371,6 +364,10 @@ const MultiStepForm = () => {
                             </div>
                             <input type="text" className={`form-control`} {...register("name", { required: true })} placeholder="Order Name" aria-label="Order Name" aria-describedby="basic-addon" />
                         </div>
+
+
+
+                        
                         <div className={`${styles.form_messageContainer}`}>
 
                             {errors.name && <div className={`${styles.form_message}`}>Order name is required</div>}
