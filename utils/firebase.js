@@ -1,5 +1,6 @@
 import firebase from 'firebase/app'
 import "firebase/firestore"
+import 'firebase/auth'
 
 const config = {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -14,9 +15,5 @@ if (!firebase.apps.length) {
     firebase.initializeApp(config)
 }
 
-const db = firebase.firestore()//.settings({ ignoreUndefinedProperties: true, merge: true })
 
-// const firestore = admin.firestore();
-// firestore.settings({ ignoreUndefinedProperties: true });
-
-export { db };
+export default firebase;

@@ -5,9 +5,18 @@ import styles from '../styles/Home.module.css'
 import SmokeElement from "smoke-effect-react";
 import Link from 'next/link'
 import Footer from '../components/Footer'
+import { googleProvider } from '../components/Auth/AuthMethods';
+import socialMediaAuth from '../components/Auth/SocialMediaAuth';
+
+
 
 
 export default function Home() {
+
+  const handleClick = async (provider) => {
+    const res = await socialMediaAuth(provider)
+    console.log(res)
+  }
 
 
   return (
@@ -36,9 +45,13 @@ export default function Home() {
             {'I\'ve been cooking all day!'}
           </div>
 
-          <Link href="/orderForm" passHref>
+
+
+          <button className={`${styles.home_button} btn`} onClick={() => handleClick(googleProvider)}>Log in With Google</button>
+
+          {/* <Link href="/orderForm" passHref>
             <button className={`${styles.home_button} btn`}>Order your Plate Now!</button>
-          </Link>
+          </Link> */}
         </h3>
 
 

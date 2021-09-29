@@ -92,7 +92,7 @@ const MultiStepForm = () => {
                 : arrTotalPrice.push(0);
 
             // console.log(prop)
-           // console.log('data:', data)
+            // console.log('data:', data)
             //console.log('newData:', newData)
         }
         const total = arrTotalPrice.reduce((arr, ac) => arr + ac).toFixed(2)
@@ -197,8 +197,8 @@ const MultiStepForm = () => {
         const p10_Dessert = newData.plate10_dessert
         const p10_Comment = data.ten_food__message
 
-        
-        
+
+
 
 
         const YOUR_SERVICE_ID = process.env.NEXT_PUBLIC_EmailJS_YOUR_SERVICE_ID;
@@ -342,7 +342,7 @@ const MultiStepForm = () => {
                             <div className="input-group-prepend">
                                 <label className={`${styles.formLabel} input-group-text`} htmlFor="inputGroupProtein">Plate #</label>
                             </div>
-                            <select {...register("plates_number")} className={`${styles.form_select } custom-select" id="plateSelect`}>
+                            <select {...register("plates_number")} className={`${styles.form_select} custom-select" id="plateSelect`}>
                                 <option className={styles.form_option} >Number of Plates</option>
                                 <option value="1" className={styles.select_ctrl} >1</option>
                                 <option value="2">2</option>
@@ -367,7 +367,7 @@ const MultiStepForm = () => {
 
 
 
-                        
+
                         <div className={`${styles.form_messageContainer}`}>
 
                             {errors.name && <div className={`${styles.form_message}`}>Order name is required</div>}
