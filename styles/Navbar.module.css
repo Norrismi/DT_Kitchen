@@ -11,10 +11,28 @@
     font-size: 28px;
 
 }
+.nav_link_LoggedIn_btn,
+.nav_link_LoggedIn{
+    font-size: 20px;
+    text-decoration: inherit;
+    color: white;
+    padding: 10px;
+}
+
+
+
+.nav_link_LoggedIn_btn:hover {
+    color: #8D0D06;
+    cursor: pointer;
+    text-decoration: inherit;
+
+}
 
 .nav_link:hover {
     color: #8D0D06;
+
 }
+
 
 
 @media (min-width: 280px) {

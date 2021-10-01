@@ -33,6 +33,12 @@ div.home_centerContainer{
   padding: 20px;
 }
 
+.home_buttonContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 
 .home_button{
   color: #DBD8D4;

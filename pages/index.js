@@ -6,7 +6,8 @@ import SmokeElement from "smoke-effect-react";
 import Link from 'next/link'
 import Footer from '../components/Footer'
 import { googleProvider } from '../components/Auth/AuthMethods';
-import socialMediaAuth from '../components/Auth/SocialMediaAuth';
+import { facebookProvider } from '../components/Auth/AuthMethods';
+import SocialMediaAuth from '../components/Auth/SocialMediaAuth';
 
 
 
@@ -14,7 +15,7 @@ import socialMediaAuth from '../components/Auth/SocialMediaAuth';
 export default function Home() {
 
   const handleClick = async (provider) => {
-    const res = await socialMediaAuth(provider)
+    const res = await SocialMediaAuth(provider)
     console.log(res)
   }
 
@@ -45,9 +46,12 @@ export default function Home() {
             {'I\'ve been cooking all day!'}
           </div>
 
+          <div className={styles.home_buttonContainer }>
 
+            <button className={`${styles.home_button} btn`} onClick={() => handleClick(googleProvider)}>Login With Google</button>
+            <button className={`${styles.home_button} btn`} onClick={() => handleClick(facebookProvider)}>Login With Facebook</button>
+          </div>
 
-          <button className={`${styles.home_button} btn`} onClick={() => handleClick(googleProvider)}>Log in With Google</button>
 
           {/* <Link href="/orderForm" passHref>
             <button className={`${styles.home_button} btn`}>Order your Plate Now!</button>
@@ -56,6 +60,8 @@ export default function Home() {
 
 
       </div>
+
+    {  console.log()}
 
 
 

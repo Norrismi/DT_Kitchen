@@ -1,13 +1,22 @@
 import firebase from '../../utils/firebase';
+import Router from 'next/router'
 
-const socialMediaAuth = (provider) => {
+
+
+const SocialMediaAuth = (provider) => {
+
+
     return firebase.auth().signInWithPopup(provider).then((res) => {
-        return res.user;
-    })
-    .catch((err) => {
-        return err;
-    })
+        return res.user
+    }).then(
+        Router.push('/orderForm')
+    ).catch((err) => {
+            return err;
+        })
+
+
 
 }
 
-export default socialMediaAuth;
+
+export default SocialMediaAuth;
