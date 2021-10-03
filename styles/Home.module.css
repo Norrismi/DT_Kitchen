@@ -1,6 +1,5 @@
 
 .home_bannerContainer{
-
   background-color: black;
 
 }
@@ -16,22 +15,13 @@ div.home_centerContainer{
 
 }
 
-/* .home_footer{
-  position: absolute;
-  top: 95%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: red;
-  background-color: red;
- 
-} */
-
-
 
 .home_content{
   color: #DBD8D4;
   padding: 20px;
 }
+
+
 
 .home_buttonContainer{
   display: flex;

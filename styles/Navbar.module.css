@@ -1,4 +1,104 @@
 .nav_container {
+    position: absolute;
+    top: 4%;
+    left: 12%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.nav_mainLinks{
+    padding-bottom: 5px;
+}
+
+
+
+.nav_loggedInLinks {
+    position: absolute;
+    top: 125%;
+    left: 32%;
+    width: auto;
+    color: white;
+    transform: translate(-50%, -50%);
+}
+
+.nav_link {
+    text-decoration: inherit;
+    color: white;
+    padding: 5px;
+    font-size: 28px;
+
+}
+
+.nav_link_LoggedIn_btn:hover {
+    color: #8D0D06;
+    cursor: pointer;
+}
+
+.nav_link:hover {
+    color: #8D0D06;
+}
+
+.nav_link_LoggedIn_btn {
+    margin-top: 5px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.nav_link_LoggedIn_btn:hover {
+    background-color: lightgray;
+    color: #8D0D06;
+
+}
+
+@media (min-width: 280px) {
+
+
+
+}
+
+@media (min-width: 375px) {
+ 
+}
+
+@media (min-width: 768px) {
+
+
+}
+
+
+
+@media (min-width: 1025px) {
+ 
+
+
+}
+
+@media (min-width: 1900px) {
+ 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+
+.nav_mainLinks{
+    
     display: flex;
     justify-content: center;
     background-color: black;
@@ -11,6 +111,13 @@
     font-size: 28px;
 
 }
+
+
+.nav_loggedIn_Container{
+    display: flex;
+    width: 500px;
+}
+
 .nav_link_LoggedIn_btn,
 .nav_link_LoggedIn{
     font-size: 20px;
@@ -75,10 +182,27 @@
     .nav_container {
         background-color: transparent;
         position: absolute;
-        top: 4%;
-        left: 17%;
+        top: 10%;
+        left: 20%;
         transform: translate(-50%, -50%);
         z-index: 1;
+    }
+
+    .nav_mainLinks{
+        background-color: transparent;
+        position: absolute;
+        top: 4%;
+        left: 30%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+        
+    }
+
+    .nav_loggedIn_Container{
+       
+        background-color: black;
+  
+    
     }
 }
 
@@ -101,4 +225,4 @@
 
 
 
-
+ */
