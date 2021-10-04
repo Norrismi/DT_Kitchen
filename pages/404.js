@@ -9,8 +9,6 @@ const NotFound = () => {
             <Link href='/' passHref>
                 <button className={`${styles.NotFound_button} btn`}>Homepage</button>
             </Link>
-
-
         </div>
     );
 }

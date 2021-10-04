@@ -3,7 +3,6 @@ import dt_kitchen_spice from '../Assets/dt_kitchen_spice.png'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import SmokeElement from "smoke-effect-react";
-import Link from 'next/link'
 import Footer from '../components/Footer'
 import { googleProvider } from '../components/Auth/AuthMethods';
 import { facebookProvider } from '../components/Auth/AuthMethods';
@@ -52,21 +51,12 @@ export default function Home() {
             <button className={`${styles.home_button} btn`} onClick={() => handleClick(facebookProvider)}>Login With Facebook</button>
           </div>
 
-
-          {/* <Link href="/orderForm" passHref>
-            <button className={`${styles.home_button} btn`}>Order your Plate Now!</button>
-          </Link> */}
         </h3>
 
 
       </div>
 
-    {  console.log()}
-
-
-
       <CarouselPics />
-
       <Footer className={styles.home_footer} />
 
     </div>
