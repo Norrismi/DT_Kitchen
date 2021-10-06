@@ -7,16 +7,60 @@ import Footer from '../components/Footer'
 import { googleProvider } from '../components/Auth/AuthMethods';
 import { facebookProvider } from '../components/Auth/AuthMethods';
 import SocialMediaAuth from '../components/Auth/SocialMediaAuth';
+import Cookingtoday from '../components/CookingToday'
+import firebase from "firebase/app";
+import { useState, useEffect } from 'react'
 
 
 
 
 export default function Home() {
 
+
+
+
+  const [cookingToday, setCookingToday] = useState()
+
+  const firestore = firebase.firestore().collection('cooking now')
+
+
+
+  useEffect(() => {
+    firestore.doc('ccgMork2aAnEvxNlEZLT').onSnapshot(item => setCookingToday(item.data().cooking))
+  }, [])
+
+  console.log(cookingToday)
+
+
+
+
   const handleClick = async (provider) => {
     const res = await SocialMediaAuth(provider)
     console.log(res)
   }
+
+
+
+
+  let showLogin = (<div className={`${styles.home_centerContainer} card`}>
+    <h3 className={`${styles.home_content}`}>
+      Excuse the smoke
+      <div>
+        {'I\'ve been cooking all day!'}
+      </div>
+
+      <div className={styles.home_buttonContainer}>
+
+        <button className={`${styles.home_button} btn`} onClick={() => handleClick(googleProvider)}>Login With Google</button>
+        <button className={`${styles.home_button} btn`} onClick={() => handleClick(facebookProvider)}>Login With Facebook</button>
+      </div>
+
+    </h3>
+
+
+  </div>)
+
+
 
 
   return (
@@ -34,27 +78,13 @@ export default function Home() {
         width="1000"
       />
 
+      <Cookingtoday />
 
 
 
-
-      <div className={`${styles.home_centerContainer} card`}>
-        <h3 className={`${styles.home_content}`}>
-          Excuse the smoke
-          <div>
-            {'I\'ve been cooking all day!'}
-          </div>
-
-          <div className={styles.home_buttonContainer }>
-
-            <button className={`${styles.home_button} btn`} onClick={() => handleClick(googleProvider)}>Login With Google</button>
-            <button className={`${styles.home_button} btn`} onClick={() => handleClick(facebookProvider)}>Login With Facebook</button>
-          </div>
-
-        </h3>
+      {(cookingToday && cookingToday == true) ? showLogin : <Cookingtoday />}
 
 
-      </div>
 
       <CarouselPics />
       <Footer className={styles.home_footer} />
