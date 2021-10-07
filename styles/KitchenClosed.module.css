@@ -47,3 +47,17 @@
         width: 65%;
       }
   }
+
+  @media (min-width: 1200px) {
+    .closed_Container{
+        top: 90%;
+        width: 45%;
+      }
+  }
+
+  @media (min-width: 1920px) {
+    .closed_Container{
+        top: 95%;
+        width: 45%;
+      }
+  }
