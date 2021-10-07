@@ -1,3 +1,39 @@
+# DT's Kitchen
+
+
+## Technology used
+- Next.js (ES6 & React Hooks)
+- Firebase/ Firestore
+- Firebase Authentication
+- React Hook Form
+- EmailJS
+- Bootstrap
+- CSS (Mobile-first responsive design)
+
+
+## Project Screen Shots
+
+![order page screenshot](Assets/example.jpg)
+
+
+## Reflection
+
+The goal of the project was to help a client streamline food orders, but also have a controlled website to compliment with his part time cooking side hustle. 
+<br />
+
+The obstacles that I overcame with this project was creating a website that is open part time at the client's discretion, database design and improving my communication with the client.
+ 
+To meet the part time role of this company, I created a boolean toggle on the database that serves up a different view, away from the user authentication view. This toggle along with other conditional toggles directs the customers away from placing food orders when the kitchen is closed. 
+ 
+Creating the Firestore database was also a small hurdle I overcame. Yes, there is a small learning curve to Firestore, but the bigger challenge I ran into was database structure for the food menu. I have learnt, it is nice to have a database framework going into a project, just like a website design framework. After several different database design trials, my solution was to set the food type (Ex. protein) as a collection with different object fields (Ex. item: "chicken $4.50")
+ 
+Finally, one last challenge I wanted to improve upon was my "communication/ people skills". The client is of a younger generation which made it easy to provide updates via text messages rather than making calls all of the time. The client was extremely easy to work with. I stressed the importance of being on the same page at the beginning of the project and getting an initial color scheme and site design helped. Throughout the development I provided updates to make sure the client was comfortable with the website.
+
+<br />
+
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

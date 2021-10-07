@@ -19,17 +19,17 @@ export default function Home() {
 
 
 
-  const [cookingToday, setCookingToday] = useState()
+  const [cooking, setCooking] = useState()
 
   const firestore = firebase.firestore().collection('cooking now')
 
 
 
   useEffect(() => {
-    firestore.doc('ccgMork2aAnEvxNlEZLT').onSnapshot(item => setCookingToday(item.data().cooking))
+    firestore.doc('ccgMork2aAnEvxNlEZLT').onSnapshot(item => setCooking(item.data().cooking))
   }, [])
 
-  console.log(cookingToday)
+  console.log(cooking)
 
 
 
@@ -78,11 +78,13 @@ export default function Home() {
         width="1000"
       />
 
-      <Cookingtoday />
 
 
+      {/* {( cooking == true) ? {showLogin} : <Cookingtoday />} */}
 
-      {(cookingToday && cookingToday == true) ? showLogin : <Cookingtoday />}
+      {showLogin}
+
+    
 
 
 
