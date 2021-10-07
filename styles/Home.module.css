@@ -15,28 +15,11 @@ div.home_centerContainer {
 }
 
 
-/* ********** Move to new file *********** */
-.home_kitchenClosedConatiner {
-  position: absolute;
-  top: 95%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  background-color: black;
-
-}
-
-
 .home_content {
   color: #DBD8D4;
   padding: 20px;
 }
 
-.home_kitchenClosed {
-  color: #8D0D06;
-  padding: 10px;
-
-}
 
 
 
@@ -59,6 +42,9 @@ div.home_centerContainer {
   background-color: #8D0D06;
   margin-top: 10px;
 }
+
+
+/* 280 ********** */
 
 
 @media (min-width: 300px) {

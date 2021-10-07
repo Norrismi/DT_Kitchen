@@ -1,0 +1,49 @@
+.closed_Container{
+    position: absolute;
+    top: 95%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background-color: black;
+  
+  }
+
+  .closed_phone,
+  .closed_body{
+    color: #8D0D06;
+    padding: 10px;
+  
+  }
+
+  .closed_phone{
+      padding-bottom: 20px;
+  }
+
+
+.closed_imgContainer{
+      padding: 10px 10px 0 10px;
+  }
+
+
+
+  @media (min-width: 280px) {
+    .closed_Container{
+        top: 60%;
+        width: 80%;
+      }
+  }
+
+
+  @media (min-width: 300px) {
+    .closed_Container{
+        top: 65%;
+        width: 80%;
+      }
+  }
+
+  @media (min-width: 768px) {
+    .closed_Container{
+        top: 65%;
+        width: 65%;
+      }
+  }

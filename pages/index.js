@@ -21,12 +21,12 @@ export default function Home() {
 
   const [cooking, setCooking] = useState()
 
-  const firestore = firebase.firestore().collection('cooking now')
+  const firestore = firebase.firestore().collection('cooking')
 
 
 
   useEffect(() => {
-    firestore.doc('ccgMork2aAnEvxNlEZLT').onSnapshot(item => setCooking(item.data().cooking))
+    firestore.doc('johRDOIaSwJHhnIVLGzs').onSnapshot(item => setCooking(item.data().cooking))
   }, [])
 
   console.log(cooking)
@@ -61,8 +61,6 @@ export default function Home() {
   </div>)
 
 
-
-
   return (
 
     <div className={styles.home_Container}>
@@ -80,12 +78,7 @@ export default function Home() {
 
 
 
-      {/* {( cooking == true) ? {showLogin} : <Cookingtoday />} */}
-
-      {showLogin}
-
-    
-
+      {( cooking == true) ? showLogin : <Cookingtoday />}
 
 
       <CarouselPics />

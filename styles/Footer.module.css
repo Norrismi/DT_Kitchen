@@ -1,107 +1,83 @@
-/* .footer_container {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    background-color: black;
-    margin-bottom: 30px;
-} */
 
-.footer_container{
-    position: absolute;
-    bottom: -65%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin-bottom: 50px;
-   
-  }
+.footer_container {
+  position: absolute;
+  bottom: -65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-bottom: 50px;
 
-.icon_container{
-    display: flex;
-    justify-content: center;
+}
+
+.icon_container {
+  display: flex;
+  justify-content: center;
 }
 
 .footer_icons {
-    color: lightgrey;
-    margin: 10px;
-    font-size: 30px;
-    display: flex;
-    cursor: pointer;
-    margin-top: 20px;
+  color: lightgrey;
+  margin: 10px;
+  font-size: 30px;
+  display: flex;
+  cursor: pointer;
+  margin-top: 20px;
 
 }
 
 .footer_icons:hover {
-    color: #8D0D06;
+  color: #8D0D06;
 
 }
 
-.footer_link{
-    text-decoration: none;
+.footer_link {
+  text-decoration: none;
 }
 
 
-.footer_text{
-    display: flex;
-    justify-content: center;
-    color: lightgrey;
+.footer_text {
+  display: flex;
+  justify-content: center;
+  color: lightgrey;
 }
+
+@media (min-width: 280px) {
+  .footer_container {
+    bottom: -30%;
+    width: 80%;
+  }
+}
+
 
 @media (min-width: 300px) {
-  
-    .footer_container{
-        bottom: -35%;
-  
-      }
-  
+  .footer_container {
+    bottom: -35%;
   }
+}
 
-  @media (min-width: 320px) {
-  
-      .footer_text{
-    
-        width: 320px;
-    }
-   
-  
+
+@media (min-width: 375px) {
+  .footer_container {
+    bottom: -30%;
+
   }
+}
 
+@media (min-width: 1025px) {
+  .footer_container {
+    bottom: -65%;
 
-
-  @media (min-width: 375px) {
-  
-    .footer_container{
-        bottom: -30%;
-  
-      }
-  
   }
+}
 
-  @media (min-width: 1025px) {
-  
-    .footer_container{
-        bottom: -65%;
-  
-      }
-  
+@media (min-width: 1100px) {
+  .footer_container {
+    bottom: -50%;
+
   }
+}
 
-  @media (min-width: 1100px) {
-  
-    .footer_container{
-        bottom: -50%;
-  
-      }
-  
+@media (min-width: 1500px) {
+  .footer_container {
+    bottom: -55%;
+
   }
-
-  @media (min-width: 1500px) {
-  
-    .footer_container{
-        bottom: -55%;
-  
-      }
-  
-  }
-
-
-  
+}
