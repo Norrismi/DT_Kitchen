@@ -5,6 +5,8 @@ import FormSuccess from './FormSuccess';
 import { useForm } from "react-hook-form";
 import { useState, useEffect } from 'react'
 import emailjs from 'emailjs-com'
+import OrderDirections from '../OrderDirections';
+import PickPlate from '../PickPlate';
 
 
 
@@ -327,6 +329,9 @@ const MultiStepForm = () => {
 
 
     return (
+
+<>
+{(formStep == 0) ? <OrderDirections/> : <PickPlate/>}
 
 
 
@@ -1487,6 +1492,7 @@ const MultiStepForm = () => {
 
 
         </form>
+        </>
 
     );
 }
