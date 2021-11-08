@@ -4,61 +4,25 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import SmokeElement from "smoke-effect-react";
 import Footer from '../components/Footer'
-import { googleProvider } from '../components/Auth/AuthMethods';
-import { facebookProvider } from '../components/Auth/AuthMethods';
-import SocialMediaAuth from '../components/Auth/SocialMediaAuth';
-import Cookingtoday from '../components/CookingToday'
+import OpenToday from '../components/OpenToday';
+import ClosedToday from '../components/ClosedToday'
 import firebase from "firebase/app";
 import { useState, useEffect } from 'react'
-
-
 
 
 export default function Home() {
 
 
-
-
   const [cooking, setCooking] = useState()
-
   const firestore = firebase.firestore().collection('cooking')
-
-
 
   useEffect(() => {
     firestore.doc('johRDOIaSwJHhnIVLGzs').onSnapshot(item => setCooking(item.data().cooking))
+
+
   }, [])
 
-  console.log(cooking)
-
-
-
-
-  const handleClick = async (provider) => {
-    const res = await SocialMediaAuth(provider)
-    console.log(res)
-  }
-
-
-
-
-  let showLogin = (<div className={`${styles.home_centerContainer} card`}>
-    <h3 className={`${styles.home_content}`}>
-      Excuse the smoke
-      <div>
-        {'I\'ve been cooking all day!'}
-      </div>
-
-      <div className={styles.home_buttonContainer}>
-
-        <button className={`${styles.home_button} btn`} onClick={() => handleClick(googleProvider)}>Login With Google</button>
-        <button className={`${styles.home_button} btn`} onClick={() => handleClick(facebookProvider)}>Login With Facebook</button>
-      </div>
-
-    </h3>
-
-
-  </div>)
+  console.log(`cooking: ${cooking}`)
 
 
   return (
@@ -77,8 +41,7 @@ export default function Home() {
       />
 
 
-
-      {( cooking == true) ? showLogin : <Cookingtoday />}
+      {(!cooking) ? <ClosedToday /> : <OpenToday />}
 
 
       <CarouselPics />

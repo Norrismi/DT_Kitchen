@@ -1,9 +1,9 @@
-.home_bannerContainer {
+.open_bannerContainer {
     background-color: black;
 }
 
 
-.home_centerContainer {
+.open_centerContainer {
     position: absolute;
     top: 95%;
     left: 50%;
@@ -13,27 +13,27 @@
 }
 
 
-.home_content {
+.open_content {
     color: #DBD8D4;
     padding: 20px;
 }
 
 
-.home_buttonContainer {
+.open_buttonContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 
-.home_button {
+.open_button {
     color: #DBD8D4;
     background-color: #000404;
     margin-top: 10px;
     width: 200px;
 }
 
-.home_button:hover {
+.open_button:hover {
     color: white;
     background-color: #8D0D06;
     margin-top: 10px;
@@ -42,14 +42,14 @@
 
 @media (min-width: 300px) {
 
-    div.home_centerContainer {
+    div.open_centerContainer {
         top: 55%;
     }
 }
 
 @media (min-width: 1025px) {
 
-    div.home_centerContainer {
+    div.open_centerContainer {
         top: 90%;
 
     }

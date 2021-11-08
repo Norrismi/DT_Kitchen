@@ -2,7 +2,7 @@ import styles from '../styles/KitchenClosed.module.css'
 import Image from 'next/image'
 import closed from '../Assets/closed.png'
 
-const Cookingtoday = () => {
+const ClosedToday = () => {
 
 
   return (
@@ -24,4 +24,4 @@ const Cookingtoday = () => {
   );
 }
 
-export default Cookingtoday;
+export default ClosedToday;
